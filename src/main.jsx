@@ -4,7 +4,7 @@ import App from './App.jsx';
 import './styles/index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import {store} from './store/store.js';
+import {store} from './app/store.js';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -12,6 +12,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <Routes>
           <Route path="" element={<App />} />
+          {/* <Route path="" element={<Search />} /> */}
+          {/* <Route path="" element={<Profile />} /> */}
         </Routes>
       </BrowserRouter>
     </Provider>

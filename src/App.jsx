@@ -1,14 +1,18 @@
-import { useState } from 'react';
-import './styles/App.css';
+import Nav from "./components/Nav";
+import Home from "./views/Home";
+import Footer from "./components/Footer";
+import "./styles/App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-      </div>
-      <h1>Vite + React</h1>
+      <Nav />
+      <Home />
+      <Footer />
+      <div></div>
+      {/* <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -19,9 +23,9 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
