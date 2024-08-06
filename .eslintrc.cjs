@@ -17,5 +17,9 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react/prop-types': 'off',
+  },
+  globals: {
+    process: 'readonly',
   },
 }

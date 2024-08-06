@@ -1,17 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { FetchImagesListThunk } from "./imgsThunk";
 
-const ImageSlice = createSlice({
+export const ImagesSlice = createSlice({
     name : "imgs",
     initialState : {
-        images : [],
+        status :"idle",
+        data : [],
+        error: null
     },
-    reducers : {
-        // addImg : (state, action) => {
-
-        // }
+    reducers : {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(FetchImagesListThunk.pending, (state) => {
+                state.status = "pending";
+            })       
+            .addCase(FetchImagesListThunk.fulfilled, (state, action) => {
+                state.status = "fulfilled";
+                state.data = action.payload;
+            })
+            .addCase(FetchImagesListThunk.rejected, (state, action) => {
+                state.status = "rejected";
+                state.error = action.error;
+            });
     }
+});
 
-})
-
-
-export const { getImg } = ImageSlice.actions;

@@ -1,11 +1,10 @@
-import iconHeart from '../assets/icon_heart.png';
-import iconMessage from '../assets/icon_message.png';
-import iconDownload from '../assets/icon_download.png';
-import { useDispatch } from 'react-redux';
-import { addFav } from '../features/favs/favsSlice';
+import { useDispatch } from "react-redux";
+import iconHeart from "../assets/icon_heart.png";
+import iconMessage from "../assets/icon_message.png";
+import iconDownload from "../assets/icon_download.png";
+import { addFav } from "../features/favs/favsSlice";
 
-const Card = () => {
-
+const Card = ({ image }) => {
   const dispatch = useDispatch();
 
   const handleFav = () => {
@@ -14,11 +13,10 @@ const Card = () => {
 
   return (
     <div>
-      {/* <p>Autor : {autor.name}</p> */}
-      {/* <img /> */}
-      <img onClick={handleFav} src={iconHeart} alt="Add fav button"/>
-      <img src={iconMessage} alt="Send message"/>
-      <img src={iconDownload} alt="Download img"/>
+      <img src={image.urls.small} alt={image.alt_description} />
+      <img onClick={handleFav} src={iconHeart} alt="Add fav button" />
+      <img src={iconMessage} alt="Send message" />
+      <img src={iconDownload} alt="Download img" />
     </div>
   );
 };
