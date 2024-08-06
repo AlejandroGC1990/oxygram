@@ -5,6 +5,6 @@ const clientId = `client_id=${keys.REACT_APP_ACCESS_KEY}`;
 
 export const getRandomPhotosEndpoint = `${apiUrl}photos/random?${clientId }`;
 
-export const getSearchPhotos = (query) => {
+export const getSearchPhotosEndpoint = (query) => {
   return `${apiUrl}search/photos/?query=${query}&${clientId}`;
 };
