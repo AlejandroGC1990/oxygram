@@ -5,7 +5,7 @@ import { FetchImagesListThunk } from "../features/imgs/imgsThunk";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { data = [], status, error } = useSelector((state) => state.imgs);
+  const { randomPhotos = [], status, error } = useSelector((state) => state.imgs);
 
   useEffect(() => {
     if (status === "idle") {
@@ -18,10 +18,10 @@ const Home = () => {
 
   return (
     <div>
-      {data.length === 0 ? (
+      {randomPhotos.length === 0 ? (
         <p>No images available</p>
       ) : (
-        data.map((image) => <Card key={image.id} image={image} />)
+        randomPhotos.map((image) => <Card key={image.id} image={image} />)
       )}
     </div>
   );
