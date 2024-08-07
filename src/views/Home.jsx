@@ -1,27 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { FetchImagesListThunk } from '../features/imgs/imgsThunk'; 
 import Card from "../components/Card";
-import { useEffect } from "react";
-import { FetchImagesListThunk } from "../features/imgs/imgsThunk";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { randomPhotos = [], status, error } = useSelector((state) => state.imgs);
+  const { randomPhotos, searchPhotos, status, error } = useSelector((state) => state.imgs); 
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(FetchImagesListThunk());
-    }
-  }, [dispatch, status]);
+    dispatch(FetchImagesListThunk(10));
+  }, [dispatch]);
 
-  if (status === "pending") return <p>Loading...</p>;
-  if (status === "rejected") return <p>{error.message}</p>;
+  if (status === 'loading') {
+    return <p>Loading...</p>;
+  }
+
+  if (status === 'failed') {
+    return <p>Error: {error}</p>;
+  }
+
+  const imagesToDisplay = searchPhotos.length > 0 ? searchPhotos : randomPhotos;
 
   return (
-    <div>
-      {randomPhotos.length === 0 ? (
-        <p>No images available</p>
+    <div className="home">
+      {imagesToDisplay.length === 0 ? (
+        <p>No images found.</p>
       ) : (
-        randomPhotos.map((image) => <Card key={image.id} image={image} />)
+        <div className="cards-container">
+          {imagesToDisplay.map((image) => (
+            <Card key={image.id} image={image} />
+          ))}
+        </div>
       )}
     </div>
   );

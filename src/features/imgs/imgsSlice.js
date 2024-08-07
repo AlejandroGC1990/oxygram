@@ -14,10 +14,7 @@ const rejected = (state, action) => {
 export const ImagesSlice = createSlice({
   name: "imgs",
   initialState: {
-    status: {
-      randomPhotos: "idle",
-      searchPhotos: "idle",
-    },
+    status: "idle",
     randomPhotos: [],
     searchPhotos: [],
     error: {

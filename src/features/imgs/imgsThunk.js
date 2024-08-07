@@ -11,7 +11,6 @@ export const FetchImagesListThunk = createAsyncThunk(
     try {
       const url = getRandomPhotosEndpoint();
       const response = await fetch(url);
-      console.log("Fetching from URL:", url);
 
       if (response.ok) {
         const data = await response.json();
@@ -32,16 +31,14 @@ export const FetchSearchImagesListThunk = createAsyncThunk(
     try {
       const url = getSearchPhotosEndpoint(query);
       const response = await fetch(url);
-      console.log("Fetching photos by query from URL:", url);
 
       if (response.ok) {
         const data = await response.json();
-        return data;
+        return data.results || [];
       }
 
       throw new Error("Failed to fetch");
     } catch (error) {
-      console.error("Error fetrching photos by query:", error);
       return [];
     }
   }
