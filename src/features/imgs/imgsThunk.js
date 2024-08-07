@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getRandomPhotosEndpoint,
-  getSearchPhotosEndpoint
+  getSearchPhotosEndpoint,
 } from "../../app/api/apiConfig";
 
 //Random photos
@@ -15,10 +15,11 @@ export const FetchImagesListThunk = createAsyncThunk(
       if (response.ok) {
         const data = await response.json();
         return data;
+      } else {
+        throw new Error("Failed to fetch");
       }
-
-      throw new Error("Failed to fetch");
     } catch (error) {
+      console.error("Error fetching images:", error);
       return null;
     }
   }
@@ -31,7 +32,6 @@ export const FetchSearchImagesListThunk = createAsyncThunk(
     try {
       const url = getSearchPhotosEndpoint(query);
       const response = await fetch(url);
-
       if (response.ok) {
         const data = await response.json();
         return data.results || [];
