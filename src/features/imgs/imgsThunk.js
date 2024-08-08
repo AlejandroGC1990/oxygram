@@ -2,8 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getRandomPhotosEndpoint,
   getSearchPhotosEndpoint,
-} from "../../app/api/apiConfig";
-import { keys } from "../../app/api/apiKeys";
+} from "../../app/API/apiConfig";
+import { keys } from "../../app/API/apiKeys.js";
 
 //Random photos
 export const FetchImagesListThunk = createAsyncThunk(
