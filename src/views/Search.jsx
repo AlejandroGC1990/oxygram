@@ -18,6 +18,7 @@ const Search = () => {
       <div>
         <input
           type="text"
+          id="searchInput"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter search term"

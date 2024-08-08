@@ -1,8 +1,8 @@
-const Dashboard = ({ images }) => {
+const Dashboard = ({ images = [] }) => {
   return (
     <div className="dashboard">
-      {images.length > 0 ? (
-        <div>
+      {images ? (
+        <div key={images.id}>
           {images.map((image) => (
             <div key={image.id}>
               <img src={image.urls.thumb} alt={image.description || "Image"} />
