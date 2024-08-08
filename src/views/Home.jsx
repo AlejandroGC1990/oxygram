@@ -5,29 +5,32 @@ import Card from "../components/Card";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { randomPhotos, searchPhotos, status, error } = useSelector((state) => state.imgs); 
+  const { randomPhotos, status} = useSelector((state) => state.imgs); 
 
   useEffect(() => {
-    dispatch(FetchImagesListThunk(10));
+    dispatch(FetchImagesListThunk());
   }, [dispatch]);
 
-  if (status === 'loading') {
-    return <p>Loading...</p>;
-  }
+  // if (status === 'loading') {
+  //   return <p>Loading...</p>;
+  // }
 
-  if (status === 'failed') {
-    return <p>Error: {error}</p>;
-  }
+  // if (status === 'failed') {
+  //   return <p>Error: {error}</p>;
+  // }
 
-  const imagesToDisplay = searchPhotos.length > 0 ? searchPhotos : randomPhotos;
+  // const imagesToDisplay = searchPhotos.length > 0 ? searchPhotos : randomPhotos;
+  console.log('Status:', status);
+  console.log('Random Photos:', randomPhotos);
 
   return (
     <div className="home">
-      {imagesToDisplay.length === 0 ? (
-        <p>No images found.</p>
-      ) : (
-        <div className="cards-container">
-          {imagesToDisplay.map((image) => (
+      <h1>Random Photos</h1>
+      {status === 'pending' && <p>Loading...</p>}
+      {status === 'rejected' && <p>Error fetching images</p>}
+      {status === 'fulfilled' && (
+        <div className="photo-gallery">
+          {randomPhotos.map((image) => (
             <Card key={image.id} image={image} />
           ))}
         </div>
