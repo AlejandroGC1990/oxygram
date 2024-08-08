@@ -1,9 +1,10 @@
+import iconMessage from "../assets/icon_message.png";
 
 const Nav = () => {
   return (
     <div>
       <img />
-      <img src="../assets/icon_message.png" />
+      <img src={iconMessage} />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Card = ({ image }) => {
 
   return (
     <div className="card">
-      <img src={image.urls.small} alt={image.alt_description || "Image from Unsplash"} />
+      <img src={image.urls.thumb} alt={image.description || "Image"} />
       <div className="card-content">
         <p>Photo by {image.user.name}</p>
         <img onClick={handleFav} src={iconHeart} alt="Add to favorites" />
@@ -25,19 +25,3 @@ const Card = ({ image }) => {
 };
 
 export default Card;
-
-
-// const Card = ({ image }) => {
-
-//   return (
-//     <div className="card">
-//       <img src={image.urls.thumb} alt={image.description || "Image"} className="card-image" />
-//       <div className="card-info">
-//         <p className="card-author">By: {image.user.name}</p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Card;
-
