@@ -4,7 +4,7 @@ import { FetchSearchImagesListThunk } from "../features/imgs/imgsThunk";
 
 const Search = () => {
   const [query, setQuery] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("nature");
   const dispatch = useDispatch();
   const { searchPhotos, status } = useSelector((state) => state.imgs);
   const defaultQuery = "nature";
