@@ -3,7 +3,7 @@ import {
   getRandomPhotosEndpoint,
   getSearchPhotosEndpoint,
 } from "../../app/api/apiConfig";
-import { keys } from "../../app/api/apiKeys";
+import { keys } from "../../app/api/apiKeys.js";
 
 //Random photos
 export const FetchImagesListThunk = createAsyncThunk(

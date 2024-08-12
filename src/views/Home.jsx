@@ -18,7 +18,6 @@ const Home = () => {
   // if (status === 'failed') {
   //   return <p>Error: {error}</p>;
   // }
-
   // const imagesToDisplay = searchPhotos.length > 0 ? searchPhotos : randomPhotos;
   console.log('Status:', status);
   console.log('Random Photos:', randomPhotos);

@@ -1,5 +1,6 @@
-const Profile = () => {
-  return (<></>);
-};
+// const Profile = () => {
+//   const {likedPhotos}
+//   return (<></>);
+// };
 
-export default Profile;
+// export default Profile;
