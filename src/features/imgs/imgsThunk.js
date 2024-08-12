@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getRandomPhotosEndpoint,
-  getSearchPhotosEndpoint
+  getSearchPhotosEndpoint,
 } from "../../app/api/apiConfig";
+import { keys } from "../../app/api/apiKeys.js";
 
 //Random photos
 export const FetchImagesListThunk = createAsyncThunk(
@@ -10,17 +11,24 @@ export const FetchImagesListThunk = createAsyncThunk(
   async () => {
     try {
       const url = getRandomPhotosEndpoint();
-      const response = await fetch(url);
-      console.log("Fetching from URL:", url);
-
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Client-ID ${keys.VITE_ACCESS_KEY}`, 
+          'Content-Type': 'application/json'
+        },
+      });
+      
       if (response.ok) {
         const data = await response.json();
         return data;
+      } else {
+        throw new Error("Failed to fetch");
       }
-
-      throw new Error("Failed to fetch");
     } catch (error) {
-      return null;
+      console.error("Error fetching images:", error);
+      throw error;
+      // return null;
     }
   }
 );
@@ -31,17 +39,23 @@ export const FetchSearchImagesListThunk = createAsyncThunk(
   async (query) => {
     try {
       const url = getSearchPhotosEndpoint(query);
-      const response = await fetch(url);
-      console.log("Fetching photos by query from URL:", url);
-
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Client-ID ${keys.VITE_ACCESS_KEY}`,
+        },
+      });
+      console.log('Response:', response)
+      
       if (response.ok) {
         const data = await response.json();
-        return data;
+        console.log('Data:', data);
+        return data.results || [];
       }
 
-      throw new Error("Failed to fetch");
+      throw new Error(`Failed to fetch search results. Status: ${response.status}`);
     } catch (error) {
-      console.error("Error fetrching photos by query:", error);
+      console.error("Error fetching images:", error);
       return [];
     }
   }

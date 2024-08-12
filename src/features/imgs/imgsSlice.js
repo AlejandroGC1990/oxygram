@@ -1,23 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FetchImagesListThunk, FetchSearchImagesListThunk } from "./imgsThunk";
 
-const fulfilled = (state, action) => {
-  state.status = "fulfilled";
-  state.images = action.payload == null ? [] : action.payload;
-};
-
-const rejected = (state, action) => {
-  state.status = "rejected";
-  state.error = action.error.message;
-};
-
 export const ImagesSlice = createSlice({
   name: "imgs",
   initialState: {
-    status: {
-      randomPhotos: "idle",
-      searchPhotos: "idle",
-    },
+    status: "idle",
     randomPhotos: [],
     searchPhotos: [],
     error: {
@@ -33,11 +20,13 @@ export const ImagesSlice = createSlice({
         state.status = "pending";
       })
       .addCase(FetchImagesListThunk.fulfilled, (state, action) => {
-        fulfilled(state, action);
+        state.status = "fulfilled";
+        // state.images = action.payload || [];
+        state.randomPhotos = action.payload == null ? [] : action.payload;
       })
       .addCase(FetchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
-        rejected(state, action);
+        state.error.randomPhotos = action.error.message; 
       });
 
     //Search Photos
@@ -46,10 +35,13 @@ export const ImagesSlice = createSlice({
         state.status = "pending";
       })
       .addCase(FetchSearchImagesListThunk.fulfilled, (state, action) => {
-        fulfilled(state, action);
+        state.status = "fulfilled";
+        // state.images = action.payload || [];
+        state.searchPhotos = action.payload == null ? [] : action.payload;
       })
       .addCase(FetchSearchImagesListThunk.rejected, (state, action) => {
-        rejected(state, action);
+        state.status = "rejected";
+        state.error.searchPhotos = action.error.message;
       });
   },
 });

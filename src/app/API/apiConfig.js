@@ -1,10 +1,10 @@
 import { keys } from "./apiKeys";
 
-const apiUrl = keys.REACT_APP_API_URL;
-const clientId = `client_id=${keys.REACT_APP_ACCESS_KEY}`;
+const apiUrl =  keys.VITE_API_URL;
+const clientId = keys.VITE_ACCESS_KEY;
 
-export const getRandomPhotosEndpoint = `${apiUrl}photos/random?${clientId }`;
+export const getRandomPhotosEndpoint = () => `${apiUrl}/photos/random?client_id=${clientId}&count=1`;
 
 export const getSearchPhotosEndpoint = (query) => {
-  return `${apiUrl}search/photos/?query=${query}&${clientId}`;
+  return `${apiUrl}/search/photos/?query=${query}&client_id=${clientId}`;
 };
