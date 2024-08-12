@@ -18,11 +18,9 @@ export const FetchImagesListThunk = createAsyncThunk(
           'Content-Type': 'application/json'
         },
       });
-      console.log('Response:', response)
-
+      
       if (response.ok) {
         const data = await response.json();
-        console.log('Data:', data);
         return data;
       } else {
         throw new Error("Failed to fetch");
@@ -47,14 +45,17 @@ export const FetchSearchImagesListThunk = createAsyncThunk(
           Authorization: `Client-ID ${keys.VITE_ACCESS_KEY}`,
         },
       });
-
+      console.log('Response:', response)
+      
       if (response.ok) {
         const data = await response.json();
+        console.log('Data:', data);
         return data.results || [];
       }
 
-      throw new Error("Failed to fetch");
+      throw new Error(`Failed to fetch search results. Status: ${response.status}`);
     } catch (error) {
+      console.error("Error fetching images:", error);
       return [];
     }
   }
