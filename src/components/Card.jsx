@@ -8,7 +8,7 @@ const Card = ({ image }) => {
   const dispatch = useDispatch();
 
   const handleFav = () => {
-    dispatch(addFav());
+    dispatch(addFav(image));
   };
 
   return (
