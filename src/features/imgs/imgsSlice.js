@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { FetchImagesListThunk, FetchSearchImagesListThunk } from "./imgsThunk";
+import { downloadImageThunk, FetchImagesListThunk, FetchSearchImagesListThunk } from "./imgsThunk";
 
 export const ImagesSlice = createSlice({
   name: "imgs",
@@ -26,7 +26,7 @@ export const ImagesSlice = createSlice({
       })
       .addCase(FetchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
-        state.error.randomPhotos = action.error.message; 
+        state.error.randomPhotos = action.error.message;
       });
 
     //Search Photos
@@ -43,7 +43,20 @@ export const ImagesSlice = createSlice({
         state.status = "rejected";
         state.error.searchPhotos = action.error.message;
       });
-  },
+
+    //Download Photos
+    builder
+      .addCase(downloadImageThunk.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(downloadImageThunk.fulfilled, (state) => {
+        state.status = "fullfilled";
+      })
+      .addCase(downloadImageThunk.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error.download = action.payload || action.error.message;
+      })
+    },
 });
 
 export default ImagesSlice.reducer;

@@ -3,6 +3,7 @@ import iconHeart from "../assets/icon_heart.png";
 import iconMessage from "../assets/icon_message.png";
 import iconDownload from "../assets/icon_download.png";
 import { addFav, removeFav } from "../features/favs/favsSlice";
+import { downloadImageThunk } from "../features/imgs/imgsThunk";
 
 const Card = ({ image }) => {
   const dispatch = useDispatch();
@@ -17,6 +18,11 @@ const Card = ({ image }) => {
     }
   };
 
+  const handleDownload = () => {
+    dispatch(downloadImageThunk(image.id));
+    console.log("Handling download for imageId:", image.id);
+  };
+
   return (
     <div className="card">
       <img src={image.urls.thumb} alt={image.description || "Image"} />
@@ -28,7 +34,7 @@ const Card = ({ image }) => {
           alt={favorite ? "Remove from favorites" : "Add to favorites"}
         />
         <img src={iconMessage} alt="Send message" />
-        <img src={iconDownload} alt="Download image" />
+        <img onClick={handleDownload} src={iconDownload} alt="Download image" />
       </div>
     </div>
   );
