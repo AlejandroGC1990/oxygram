@@ -1,17 +1,12 @@
-import Nav from "./components/Nav";
-import Home from "./views/Home";
-import Footer from "./components/Footer";
 import "./styles/App.css";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
-    <>
-      <Nav />
-      <Home />
-      <Footer />
-    </>
+    <div>
+      <Outlet />
+    </div>
   );
 }
 

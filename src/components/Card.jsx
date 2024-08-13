@@ -1,14 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import iconHeart from "../assets/icon_heart.png";
 import iconMessage from "../assets/icon_message.png";
 import iconDownload from "../assets/icon_download.png";
-import { addFav } from "../features/favs/favsSlice";
+import { addFav, removeFav } from "../features/favs/favsSlice";
 
 const Card = ({ image }) => {
   const dispatch = useDispatch();
+  const favs = useSelector((state) => state.favs.favs);
+  const favorite = favs.some((fav) => fav.id === image.id);
 
   const handleFav = () => {
-    dispatch(addFav(image));
+    if (favorite) {
+      dispatch(removeFav(image));
+    } else {
+      dispatch(addFav(image));
+    }
   };
 
   return (
@@ -16,7 +22,11 @@ const Card = ({ image }) => {
       <img src={image.urls.thumb} alt={image.description || "Image"} />
       <div className="card-content">
         <p>Photo by {image.user.name}</p>
-        <img onClick={handleFav} src={iconHeart} alt="Add to favorites" />
+        <img
+          onClick={handleFav}
+          src={iconHeart}
+          alt={favorite ? "Remove from favorites" : "Add to favorites"}
+        />
         <img src={iconMessage} alt="Send message" />
         <img src={iconDownload} alt="Download image" />
       </div>

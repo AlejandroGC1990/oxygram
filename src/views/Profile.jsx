@@ -8,7 +8,7 @@ const Profile = () => {
     <div>
       <h1>PROFILE</h1>
       <div>
-        {favs.lenght === 0 ? (
+        {favs.length === 0 ? (
           <p>No favorite photos yet</p>
         ) : (
           favs.map((image) => <Card key={image.id} image={image} />)
