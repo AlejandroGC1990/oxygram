@@ -35,6 +35,16 @@ const Card = ({ image }) => {
         />
         <img src={iconMessage} alt="Send message" />
         <img onClick={handleDownload} src={iconDownload} alt="Download image" />
+        <p>Width: {image.width} px.</p>
+        <p>Height: {image.heigth} px.</p>
+        <p>Likes: {image.likes}</p>
+        {image.tags && image.tags.lenght > 0 ? (
+          image.tags.map((tag) => (
+              <p key={image.id}>{tag.title}</p>
+            ))
+        ) : (
+          <p></p>
+        )}
       </div>
     </div>
   );
