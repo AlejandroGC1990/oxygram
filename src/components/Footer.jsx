@@ -12,7 +12,7 @@ const Footer = () => {
       <Link to="/">
         <img src={icon_home} alt="Home" />
       </Link>
-      <Link to="/search">
+      <Link to="/profile">
         <img src={icon_user} alt="Profile" />
       </Link>
     </div>
