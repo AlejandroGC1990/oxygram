@@ -68,7 +68,7 @@ export const downloadImageThunk = createAsyncThunk(
   async (imageId, { getState }) => {
     try {
       const state = getState();
-      console.log("Current state:", state); 
+      console.log("Current state:", state);
       const randomPhotos = state.imgs.randomPhotos || [];
       const searchPhotos = state.imgs.searchPhotos || [];
       const photo =
@@ -79,13 +79,23 @@ export const downloadImageThunk = createAsyncThunk(
         throw new Error("Photo not found");
       }
 
-      const url = photo.links.download;
-      console.log("Download URL:", url);
-      const response = await fetch(url, {
+      //enviar solicitud de seguimiento de descarga
+      const downloadTrackingUrl = photo.links.download_location;
+      console.log("Download URL:", downloadTrackingUrl);
+       await fetch(downloadTrackingUrl, {
         method: "GET",
         headers: {
           Authorization: `Client-ID ${keys.VITE_ACCESS_KEY}`,
         },
+      });
+
+      //descargar imagen
+      const imageUrlDownload = photo.urls.full;
+      const response = await fetch(imageUrlDownload, {
+        method: "GET",
+        headers: {
+          Authorization: `Client-ID ${keys.VITE_ACCESS_KEY}`,
+        }
       });
 
       console.log("Download response status:", response.status);
