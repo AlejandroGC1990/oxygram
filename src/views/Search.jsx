@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchSearchImagesListThunk } from "../features/imgs/imgsThunk";
+import {useParams} from "react-router-dom";
+import Modal from "../components/ModalCard";
 
 const Search = () => {
   const [query, setQuery] = useState("");
   const [searchQuery, setSearchQuery] = useState("nature");
+  const [selectedImg, setSelectedImg] = useState(null);
   const dispatch = useDispatch();
   const { searchPhotos, status } = useSelector((state) => state.imgs);
   const defaultQuery = "nature";
+  const { tag } = useParams(); 
+
+  useEffect(() => {
+    if (tag) {
+      setQuery(tag);
+      setSearchQuery(tag);
+    } else if (searchQuery) {
+      dispatch(FetchSearchImagesListThunk(searchQuery));
+    }
+  }, [tag, searchQuery, dispatch]);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -22,6 +35,14 @@ const Search = () => {
       dispatch(FetchSearchImagesListThunk(searchQuery  || defaultQuery));
     }
   }, [searchQuery, dispatch]);
+
+  const openModal = (image) => {
+    setSelectedImg(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImg(null);
+  };
 
   console.log("Status:", status);
   console.log("Search Photos:", searchPhotos);
@@ -45,9 +66,13 @@ const Search = () => {
               key={image.id}
               src={image.urls.small}
               alt={image.alt_description}
+              onClick={() => openModal(image)}
             />
           ))}
         </div>
+      )}
+      {selectedImg && (
+        <Modal image={selectedImg} onClose={closeModal} />
       )}
     </div>
   );

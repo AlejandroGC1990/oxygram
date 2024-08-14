@@ -17,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/search/:tag" element={<Search />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
