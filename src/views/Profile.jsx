@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import Card from "../components/Card";
+import Carousel from "../components/Carousel";
 
 const Profile = () => {
   const { favs } = useSelector((state) => state.favs);
@@ -11,7 +12,12 @@ const Profile = () => {
         {favs.length === 0 ? (
           <p>No favorite photos yet</p>
         ) : (
-          favs.map((image) => <Card key={image.id} image={image} />)
+          <div>
+            <Carousel images={favs} />
+            <div>
+              {favs.map((image) => <Card key={image.id} image={image} />)}
+            </div>
+          </div>
         )}
       </div>
     </div>

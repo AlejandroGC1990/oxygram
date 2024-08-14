@@ -20,7 +20,6 @@ const Card = ({ image }) => {
 
   const handleDownload = () => {
     dispatch(downloadImageThunk(image.id));
-    console.log("Handling download for imageId:", image.id);
   };
 
   return (
@@ -35,16 +34,28 @@ const Card = ({ image }) => {
         />
         <img src={iconMessage} alt="Send message" />
         <img onClick={handleDownload} src={iconDownload} alt="Download image" />
-        <p>Width: {image.width} px.</p>
-        <p>Height: {image.heigth} px.</p>
-        <p>Likes: {image.likes}</p>
-        {image.tags && image.tags.lenght > 0 ? (
-          image.tags.map((tag) => (
-              <p key={image.id}>{tag.title}</p>
-            ))
+
+        {image.width && image.width >= 0 ? (
+          <p>Width: {image.width} px</p>
         ) : (
           <p></p>
         )}
+        {image.height && image.height >= 0 ? (
+          <p>Height: {image.height} px</p>
+        ) : (
+          <p></p>
+        )}
+        {image.likes && image.likes >= 0 ? (
+          <p>Likes: {image.likes}</p>
+        ) : (
+          <p></p>
+        )}
+        {image.tags && image.tags.lenght > 0 ? (
+          image.tags.map((tag) => <p key={image.id}>{tag.title}</p>)
+        ) : (
+          <p></p>
+        )}
+        
       </div>
     </div>
   );

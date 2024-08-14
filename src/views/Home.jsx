@@ -11,17 +11,6 @@ const Home = () => {
     dispatch(FetchImagesListThunk());
   }, [dispatch]);
 
-  // if (status === 'loading') {
-  //   return <p>Loading...</p>;
-  // }
-
-  // if (status === 'failed') {
-  //   return <p>Error: {error}</p>;
-  // }
-  // const imagesToDisplay = searchPhotos.length > 0 ? searchPhotos : randomPhotos;
-  console.log('Status:', status);
-  console.log('Random Photos:', randomPhotos);
-
   return (
     <div className="home">
       <h1>Random Photos</h1>
