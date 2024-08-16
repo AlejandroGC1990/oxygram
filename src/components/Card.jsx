@@ -28,7 +28,7 @@ const Card = ({ image }) => {
 
   useEffect(() => {
     setNewComment(comment);
-  }, [comment, image.id]);
+  }, [comment]);
 
   useEffect(() => {
     const savedComments = localStorage.getItem("comments");

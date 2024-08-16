@@ -1,40 +1,30 @@
-import { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import { useState } from "react";
 
 const CommentModal = ({ comment, onSave, onClose }) => {
-  const [localComment, setLocalComment] = useState(comment || "");
-
-  useEffect(() => {
-    setLocalComment(comment);
-  }, [comment]);
+  const [inputValue, setInputValue] = useState(comment);
 
   const handleSave = () => {
-    onSave(localComment);
-    onClose();
+    if (typeof onSave === 'function') {
+      onSave(inputValue);
+    }
   };
 
-  const handleDelete = () => {
-    onSave("");
-    onClose();
+  const handleClose = () => {
+    if (typeof onClose === 'function') {
+      onClose();
+    }
   };
 
-  return ReactDOM.createPortal(
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h2>Edit Comment</h2>
-        <textarea
-          value={localComment}
-          onChange={(e) => setLocalComment(e.target.value)}
-        />
-        <div className="modal-actions">
-          <button onClick={handleSave}>Save</button>
-          <button onClick={handleDelete}>Delete</button>
-          <button onClick={onClose}>Cancel</button>
-        </div>
-      </div>
-    </div>,
-    document.body
+  return (
+    <div className="modal">
+      <textarea
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button onClick={handleSave}>Save</button>
+      <button onClick={handleClose}>Close</button>
+    </div>
   );
 };
 
-export default CommentModal
+export default CommentModal;
