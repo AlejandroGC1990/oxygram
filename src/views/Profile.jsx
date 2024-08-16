@@ -5,7 +5,6 @@ import Carousel from "../components/Carousel";
 const Profile = () => {
   const { favs } = useSelector((state) => state.favs);
 
-  console.log(favs);
   return (
     <div>
       <h1>PROFILE</h1>

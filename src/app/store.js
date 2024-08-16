@@ -1,10 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { FavSlice } from '../features/favs/favsSlice';
-import { ImagesSlice } from '../features/imgs/imgsSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import favsReducer  from "../features/favs/favsSlice";
+import imgsReducer from "../features/imgs/imgsSlice";
+import commentsReducer from "../features/comments/commentsSlice";
 
 export const store = configureStore({
-    reducer: {
-        "favs" : FavSlice.reducer,
-        "imgs" : ImagesSlice.reducer
-    }
-})
+  reducer: {
+    favs: favsReducer,
+    imgs: imgsReducer,
+    comments: commentsReducer,
+  },
+});
