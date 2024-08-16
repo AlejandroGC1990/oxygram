@@ -92,7 +92,7 @@ const Card = ({ image }) => {
           <p></p>
         )}
 
-          <p>{comment}</p>
+          <p>Description: {comment}</p>
 
       </div>
       {showCommentModal && (
