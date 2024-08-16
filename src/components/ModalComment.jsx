@@ -23,7 +23,7 @@ const CommentModal = ({ comment, onSave, onClose }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h2>Edit Comment</h2>
         <textarea
-          value={comment}
+          value={localComment}
           onChange={(e) => setLocalComment(e.target.value)}
         />
         <div className="modal-actions">

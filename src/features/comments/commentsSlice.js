@@ -10,6 +10,9 @@ const CommentSlice = createSlice({
             const {imageId, comment} = action.payload;
             state[imageId] = comment;
         },
+        loadComments(state, action) {
+            return { ...state, ...action.payload };
+        },
         removeComment(state, action) {
             const {imageId} = action.payload;
             delete state[imageId];
@@ -17,5 +20,5 @@ const CommentSlice = createSlice({
     },
 });
 
-export const {setComment, removeComment} = CommentSlice.actions;
+export const {setComment, loadComments, removeComment} = CommentSlice.actions;
 export default CommentSlice.reducer;
