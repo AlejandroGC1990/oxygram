@@ -9,6 +9,8 @@ const CommentModal = ({ comment, onSave, onClose }) => {
     }
   };
 
+  
+
   const handleClose = () => {
     if (typeof onClose === 'function') {
       onClose();

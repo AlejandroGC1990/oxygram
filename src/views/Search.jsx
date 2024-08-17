@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FetchSearchImagesListThunk } from "../features/imgs/imgsThunk";
 import {useParams} from "react-router-dom";
 import Modal from "../components/ModalCard";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -12,6 +13,8 @@ const Search = () => {
   const { searchPhotos, status } = useSelector((state) => state.imgs);
   const defaultQuery = "nature";
   const { tag } = useParams(); 
+
+  useInfiniteScroll();
 
   useEffect(() => {
     if (tag) {
@@ -43,9 +46,6 @@ const Search = () => {
   const closeModal = () => {
     setSelectedImg(null);
   };
-
-  console.log("Status:", status);
-  console.log("Search Photos:", searchPhotos);
 
   return (
     <div className="search">

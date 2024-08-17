@@ -8,9 +8,9 @@ import { keys } from "../../app/api/apiKeys.js";
 //Random photos
 export const FetchImagesListThunk = createAsyncThunk(
   "imgs/fetchImagesList",
-  async () => {
+  async ({page = 1, perPage = 10} = {}) => {
     try {
-      const url = getRandomPhotosEndpoint();
+      const url = getRandomPhotosEndpoint({page, perPage});
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -35,20 +35,18 @@ export const FetchImagesListThunk = createAsyncThunk(
 //Search photos
 export const FetchSearchImagesListThunk = createAsyncThunk(
   "imgs/fetchSearchImagesList",
-  async (query) => {
+  async ({ query, page = 1, perPage = 10 }) => {
     try {
-      const url = getSearchPhotosEndpoint(query);
+      const url = getSearchPhotosEndpoint(query, page, perPage);
       const response = await fetch(url, {
         method: "GET",
         headers: {
           Authorization: `Client-ID ${keys.VITE_ACCESS_KEY}`,
         },
       });
-      console.log("Response:", response);
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Data:", data);
         return data.results || [];
       }
 
