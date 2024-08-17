@@ -1,52 +1,29 @@
-import { useEffect, useState } from "react";
+// components/Card.jsx
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addFav, removeFav } from "../features/favs/favsSlice";
+import { downloadImageThunk } from "../features/imgs/imgsThunk";
+import { openModal, removeComment } from "../features/comments/commentsSlice";
 import CommentModal from "./ModalComment";
 import iconHeart from "../assets/icon_heart.png";
 import iconMessage from "../assets/icon_message.png";
 import iconDownload from "../assets/icon_download.png";
 import iconComment from "../assets/icon_comment.png";
-import { addFav, removeFav } from "../features/favs/favsSlice";
-import { downloadImageThunk } from "../features/imgs/imgsThunk";
-import { useNavigate } from "react-router-dom";
-import {
-  removeComment,
-  setComment,
-  loadComments,
-} from "../features/comments/commentsSlice";
 
 const Card = ({ image }) => {
-  const [showCommentModal, setShowCommentModal] = useState(false);
-  const [newComment, setNewComment] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const favs = useSelector((state) => state.favs.favs);
-  const comments = useSelector((state) => state.comments);
+  const comments = useSelector((state) => state.comments.comments);
+  const { visible, imageId } = useSelector((state) => state.comments.modal);
 
   const favorite = favs.some((fav) => fav.id === image.id);
   const comment = comments[image.id] || "";
-
-  useEffect(() => {
-    setNewComment(comment);
-  }, [comment]);
-
-  useEffect(() => {
-    const savedComments = localStorage.getItem("comments");
-    if (savedComments) {
-      const parsedComments = JSON.parse(savedComments);
-      dispatch(loadComments(parsedComments));
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    localStorage.setItem("comments", JSON.stringify(comments));
-  }, [comments]);
 
   const handleFav = () => {
     if (favorite) {
       dispatch(removeFav(image));
       dispatch(removeComment({ imageId: image.id }));
-      setNewComment("");
     } else {
       dispatch(addFav(image));
     }
@@ -57,17 +34,7 @@ const Card = ({ image }) => {
   };
 
   const handleCommentClick = () => {
-    setShowCommentModal(true);
-  };
-
-  const handleCloseCommentModal = () => {
-    setShowCommentModal(false);
-  };
-
-  const handleSaveComment = (newComment) => {
-    dispatch(setComment({ imageId: image.id, comment: newComment }));
-    setNewComment(newComment);
-    setShowCommentModal(false);
+    dispatch(openModal(image.id));
   };
 
   const handleTagClick = (tag) => {
@@ -109,13 +76,7 @@ const Card = ({ image }) => {
 
         <p>Description: {comment}</p>
       </div>
-      {showCommentModal && (
-        <CommentModal
-          comment={newComment}
-          onSave={handleSaveComment}
-          onClose={handleCloseCommentModal}
-        />
-      )}
+      {visible && imageId === image.id && <CommentModal />}
     </div>
   );
 };
