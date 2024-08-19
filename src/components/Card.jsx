@@ -1,4 +1,3 @@
-// components/Card.jsx
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addFav, removeFav } from "../features/favs/favsSlice";
@@ -45,9 +44,9 @@ const Card = ({ image }) => {
 
   return (
     <div className="card">
-        <p className="card__nameUser">
-          <strong>@{image.user.name}</strong>
-        </p>
+      <p className="card__nameUser">
+        <strong>@{image.user.name}</strong>
+      </p>
       <div className="card__content">
         <img
           className="card__content__img"
@@ -86,16 +85,11 @@ const Card = ({ image }) => {
             alt="Download image"
           />
         </div>
-        {image.width > 0 && (
-          <p>
-            <strong>Width:</strong> {image.width} px
-          </p>
-        )}
-        {image.height > 0 && (
-          <p>
-            <strong>Height:</strong> {image.height} px
-          </p>
-        )}
+        <p>
+          <strong>Width:</strong> {image.width}px <strong>Height:</strong> {image.height}px
+          
+        </p>
+
         {comment.length > 0 && (
           <p>
             <strong>Description:</strong> {comment}

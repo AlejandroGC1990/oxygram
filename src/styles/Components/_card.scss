@@ -1,3 +1,5 @@
+@import "../variables";
+
 .card {
   display: flex;
   flex-direction: column;
@@ -8,12 +10,13 @@
   background-color: #fff;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-bottom: 1em;
+  margin-top: 1em;
 
   &__nameUser {
-    margin:0 0 0.5em 0.5em;
+    margin: 0 0 0.5em 0.5em;
     font-size: 1em;
     color: #333;
+    color: $primary-color;
   }
 
   &__content {
@@ -47,18 +50,18 @@
       }
     }
 
-    p{
-        margin: 0.2em 0;
+    p {
+      margin: 0.2em 0;
     }
 
     &__tags {
       a {
-        color: #007bff; // Color azul para las etiquetas
+        color: #5e646b;
         text-decoration: none;
         font-weight: bold;
 
         &:hover {
-          text-decoration: underline; // Subrayar al pasar el mouse
+          text-decoration: underline;
         }
       }
     }

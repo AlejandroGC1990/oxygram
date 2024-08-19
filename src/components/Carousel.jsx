@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import "../styles/Components/Carousel.css";
 import "../styles/Components/_carousel.scss";
 
 const Carousel = ({ images }) => {
