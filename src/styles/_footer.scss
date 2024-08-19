@@ -1,16 +1,20 @@
+@import "./variables";
+
 .footer {
   position: fixed;
   width: 100%;
-  top: 0;
   left: 0;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  position: relative;
-  background-color: red;
-
+  border-color: $primary-color;
+  border-top: 0.5em;
+  background-color: white;
+  bottom: 0;
+  padding: 0.5rem 0;
+  
   &__icon {
     height: 2em;
     width: auto;

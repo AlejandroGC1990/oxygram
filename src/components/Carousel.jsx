@@ -35,7 +35,7 @@ const Carousel = ({ images }) => {
         )}
       </div>
       <div className="carousel__content-dots">
-      <button className="carousel__content-dots__button--prev" onClick={handlePrev}>
+      <button className="carousel__content-dots__button" onClick={handlePrev}>
         &lt;
       </button>
         {displayedImages.map((_, index) => (

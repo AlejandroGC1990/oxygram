@@ -9,8 +9,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: blueviolet;
-  
+ 
   &__content {
     display: flex;
     justify-content: center;
@@ -44,23 +43,12 @@
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
       border: none;
-      padding: 0.5em 1em;
+      padding: 0.35em;
       cursor: pointer;
       border-radius: 50%;
       z-index: 1;
+      margin: 0 1em;
       transition: background-color 0.3s;
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-
-      &--prev {
-        margin-right: 1em;
-      }
-
-      &--next {
-        right: 0.625em; 
-      }
     }
 
     &__dot {

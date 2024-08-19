@@ -9,7 +9,7 @@ import iconHeart from "../assets/icon_heart.png";
 import iconMessage from "../assets/icon_message.png";
 import iconDownload from "../assets/icon_download.png";
 import iconComment from "../assets/icon_comment.png";
-import '../styles/Components/_card.scss';
+import "../styles/Components/_card.scss";
 
 const Card = ({ image }) => {
   const dispatch = useDispatch();
@@ -45,23 +45,35 @@ const Card = ({ image }) => {
 
   return (
     <div className="card">
-      <img src={image.urls.thumb} alt={image.description || "Image"} />
+      <p>Photo by {image.user.name}</p>
       <div className="card__content">
-        <p>Photo by {image.user.name}</p>
-        <img className="card__content__icon"
+        <img src={image.urls.thumb} alt={image.description || "Image"} />
+
+        <img
+          className="card__content__icon"
           onClick={handleFav}
           src={iconHeart}
           alt={favorite ? "Remove from favorites" : "Add to favorites"}
         />
         {favorite && (
-          <img className="card__content__icon"
+          <img
+            className="card__content__icon"
             onClick={handleCommentClick}
             src={iconComment}
             alt="Add comment"
           />
         )}
-        <img className="card__content__icon" onClick={handleDownload} src={iconDownload} alt="Download image" />
-        <img className="card__content__icon" src={iconMessage} alt="Send message" />
+        <img
+          className="card__content__icon"
+          onClick={handleDownload}
+          src={iconDownload}
+          alt="Download image"
+        />
+        <img
+          className="card__content__icon"
+          src={iconMessage}
+          alt="Send message"
+        />
 
         {image.width > 0 && <p>Width: {image.width} px</p>}
         {image.height > 0 && <p>Height: {image.height} px</p>}
