@@ -1,0 +1,11 @@
+.card{
+    width: 100%;
+    background-color: blue;
+
+    &__content{
+
+        &__icon{
+            width: 2.5em;
+        }
+    }
+}

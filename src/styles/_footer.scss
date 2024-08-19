@@ -1,0 +1,19 @@
+.footer {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  background-color: red;
+
+  &__icon {
+    height: 2em;
+    width: auto;
+    padding: 0 1em;
+  }
+}
