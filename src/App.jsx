@@ -1,11 +1,12 @@
 import "./styles/App.css";
 import { Outlet } from "react-router-dom";
 
+
 function App() {
 
   return (
     <div>
-      <Outlet />
+      <Outlet className={index.css} />
     </div>
   );
 }

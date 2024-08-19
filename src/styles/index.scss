@@ -1,3 +1,6 @@
+// @import "./variables.scss";
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,14 +10,17 @@
 body {
   min-width: 320px;
   text-align: center;
-}
-body h1,
-body h2,
-body h3 {
-  text-align: center;
-}
-body main {
-  display: block;
+
+  h1,
+  h2,
+  h3 {
+    // font-family: $font-primary;
+    text-align: center;
+  }
+
+  main {
+    display: block;
+  }
 }
 
 @media (min-width: 1000px) {
