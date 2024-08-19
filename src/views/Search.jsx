@@ -1,40 +1,38 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchSearchImagesListThunk } from "../features/imgs/imgsThunk";
-import {useParams} from "react-router-dom";
+import { FetchSearchImagesListThunk, FetchImagesListThunk } from "../features/imgs/imgsThunk";
+import { useParams } from "react-router-dom";
 import Modal from "../components/ModalCard";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
 
 const Search = () => {
   const [query, setQuery] = useState("");
-  const [searchQuery, setSearchQuery] = useState("nature");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [selectedImg, setSelectedImg] = useState(null);
   const dispatch = useDispatch();
   const { searchPhotos, status } = useSelector((state) => state.imgs);
-  const defaultQuery = "nature";
-  const { tag } = useParams(); 
+  const { tag } = useParams();
+
+  useInfiniteScroll();
 
   useEffect(() => {
     if (tag) {
       setQuery(tag);
-      setSearchQuery(tag);
-    } else if (searchQuery) {
-      dispatch(FetchSearchImagesListThunk(searchQuery));
+      dispatch(FetchSearchImagesListThunk({ query: tag }));
+    } else if (query === "") {
+      dispatch(FetchImagesListThunk());
+    } else {
+      dispatch(FetchSearchImagesListThunk({ query }));
     }
-  }, [tag, searchQuery, dispatch]);
+  }, [tag, query, dispatch]);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
-  const handleSearchClick = () => {
-    setSearchQuery(query);
-    console.log(query);
-  };
 
-  useEffect(() => {
-    if (searchQuery !== "") {
-      dispatch(FetchSearchImagesListThunk(searchQuery  || defaultQuery));
-    }
-  }, [searchQuery, dispatch]);
+  const handleSearchClick = () => {
+    dispatch(FetchSearchImagesListThunk({ query }));
+  };
 
   const openModal = (image) => {
     setSelectedImg(image);
@@ -43,9 +41,6 @@ const Search = () => {
   const closeModal = () => {
     setSelectedImg(null);
   };
-
-  console.log("Status:", status);
-  console.log("Search Photos:", searchPhotos);
 
   return (
     <div className="search">

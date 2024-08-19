@@ -1,27 +1,36 @@
+// features/comments/commentsSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
+const loadCommentsFromLocalStorage = () => {
+  const comments = localStorage.getItem("comments");
+  return comments ? JSON.parse(comments) : {};
+};
+
+const saveCommentsToLocalStorage = (comments) => {
+  localStorage.setItem("comments", JSON.stringify(comments));
+};
+
 const initialState = {
-  comments: {},
+  comments: loadCommentsFromLocalStorage(),
   modal: {
     visible: false,
     imageId: null,
   },
 };
 
-const CommentSlice = createSlice({
+const commentSlice = createSlice({
   name: "comments",
   initialState,
   reducers: {
     setComment(state, action) {
       const { imageId, comment } = action.payload;
-      state[imageId] = comment;
-    },
-    loadComments(state, action) {
-      return { ...state, ...action.payload };
+      state.comments[imageId] = comment;
+      saveCommentsToLocalStorage(state.comments);
     },
     removeComment(state, action) {
       const { imageId } = action.payload;
-      delete state[imageId];
+      delete state.comments[imageId];
+      saveCommentsToLocalStorage(state.comments);
     },
     openModal(state, action) {
       state.modal = {
@@ -38,11 +47,7 @@ const CommentSlice = createSlice({
   },
 });
 
-export const {
-  setComment,
-  loadComments,
-  removeComment,
-  openModal,
-  closeModal,
-} = CommentSlice.actions;
-export default CommentSlice.reducer;
+export const { setComment, removeComment, openModal, closeModal } =
+  commentSlice.actions;
+
+export default commentSlice.reducer;

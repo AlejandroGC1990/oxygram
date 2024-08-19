@@ -7,12 +7,26 @@ export const ImagesSlice = createSlice({
     status: "idle",
     randomPhotos: [],
     searchPhotos: [],
+    searchQuery: "",
+    page: 1,
     error: {
       randomPhotos: null,
       searchPhotos: null,
     },
   },
-  reducers: {},
+  reducers: {
+    incrementPage: (state) => {
+      state.page += 1;
+    },
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+      state.page = 1;
+      state.searchPhotos = [];
+    },
+    resetPage: (state) => {
+      state.page = 1;
+    }
+  },
   extraReducers: (builder) => {
     //Random Photos
     builder
@@ -21,7 +35,7 @@ export const ImagesSlice = createSlice({
       })
       .addCase(FetchImagesListThunk.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.randomPhotos = action.payload == null ? [] : action.payload;
+        state.randomPhotos = [...state.randomPhotos, ...action.payload];
       })
       .addCase(FetchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
@@ -36,6 +50,8 @@ export const ImagesSlice = createSlice({
       .addCase(FetchSearchImagesListThunk.fulfilled, (state, action) => {
         state.status = "fulfilled";
         state.searchPhotos = action.payload == null ? [] : action.payload;
+        
+        state.randomPhotos = [...state.randomPhotos, ...action.payload];
       })
       .addCase(FetchSearchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
@@ -57,4 +73,5 @@ export const ImagesSlice = createSlice({
     },
 });
 
+export const { incrementPage, setSearchQuery, resetPage } = ImagesSlice.actions;
 export default ImagesSlice.reducer;
