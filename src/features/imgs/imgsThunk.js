@@ -69,9 +69,13 @@ export const downloadImageThunk = createAsyncThunk(
       console.log("Current state:", state);
       const randomPhotos = state.imgs.randomPhotos || [];
       const searchPhotos = state.imgs.searchPhotos || [];
+      console.log("Random Photos:", randomPhotos);
+      console.log("Search Photos:", searchPhotos);
       const photo =
         randomPhotos.find((photo) => photo.id === imageId) ||
         searchPhotos.find((photo) => photo.id === imageId);
+
+      console.log("Photo found:", photo);
 
       if (!photo) {
         throw new Error("Photo not found");

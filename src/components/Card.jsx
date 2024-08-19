@@ -30,6 +30,7 @@ const Card = ({ image }) => {
   };
 
   const handleDownload = () => {
+    console.log("Downloading image with ID:", image.id);
     dispatch(downloadImageThunk(image.id));
   };
 
@@ -38,7 +39,7 @@ const Card = ({ image }) => {
   };
 
   const handleTagClick = (tag) => {
-    navigate(`/search/${tag}`);
+    navigate(`/search/${tag}/`);
   };
 
   return (
