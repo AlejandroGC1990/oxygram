@@ -45,52 +45,77 @@ const Card = ({ image }) => {
 
   return (
     <div className="card">
-      <p>Photo by {image.user.name}</p>
+        <p className="card__nameUser">
+          <strong>@{image.user.name}</strong>
+        </p>
       <div className="card__content">
-        <img src={image.urls.thumb} alt={image.description || "Image"} />
-
         <img
-          className="card__content__icon"
-          onClick={handleFav}
-          src={iconHeart}
-          alt={favorite ? "Remove from favorites" : "Add to favorites"}
+          className="card__content__img"
+          src={image.urls.thumb}
+          alt={image.description || "Image"}
         />
-        {favorite && (
+        <div className="card__content__icon">
           <img
-            className="card__content__icon"
-            onClick={handleCommentClick}
-            src={iconComment}
-            alt="Add comment"
+            className="card__content__icon__action"
+            onClick={handleFav}
+            src={iconHeart}
+            alt={favorite ? "Remove from favorites" : "Add to favorites"}
           />
+          {image.likes > 0 && (
+            <p className="">
+              <strong>{image.likes}</strong>
+            </p>
+          )}
+          {favorite && (
+            <img
+              className="card__content__icon__action"
+              onClick={handleCommentClick}
+              src={iconComment}
+              alt="Add comment"
+            />
+          )}
+          <img
+            className="card__content__icon__action"
+            src={iconMessage}
+            alt="Send message"
+          />
+          <img
+            className="card__content__icon__action"
+            onClick={handleDownload}
+            src={iconDownload}
+            alt="Download image"
+          />
+        </div>
+        {image.width > 0 && (
+          <p>
+            <strong>Width:</strong> {image.width} px
+          </p>
         )}
-        <img
-          className="card__content__icon"
-          onClick={handleDownload}
-          src={iconDownload}
-          alt="Download image"
-        />
-        <img
-          className="card__content__icon"
-          src={iconMessage}
-          alt="Send message"
-        />
-
-        {image.width > 0 && <p>Width: {image.width} px</p>}
-        {image.height > 0 && <p>Height: {image.height} px</p>}
-        {image.likes > 0 && <p>Likes: {image.likes}</p>}
-        {image.tags && image.tags.length > 0 ? (
-          image.tags.map((tag) => (
-            <a key={tag.title} onClick={() => handleTagClick(tag.title)}>
-              #{tag.title}{" "}
-            </a>
-          ))
-        ) : (
-          <p></p>
+        {image.height > 0 && (
+          <p>
+            <strong>Height:</strong> {image.height} px
+          </p>
+        )}
+        {comment.length > 0 && (
+          <p>
+            <strong>Description:</strong> {comment}
+          </p>
         )}
 
-        <p>Description: {comment}</p>
+        <div className="card__content__tags">
+          {image.tags && image.tags.length > 0 ? (
+            image.tags.map((tag) => (
+              <a key={tag.title} onClick={() => handleTagClick(tag.title)}>
+                #{tag.title}{" "}
+              </a>
+            ))
+          ) : (
+            <p></p>
+          )}
+        </div>
+
+        {visible && imageId === image.id && <CommentModal />}
       </div>
-      {visible && imageId === image.id && <CommentModal />}
     </div>
   );
 };
