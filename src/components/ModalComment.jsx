@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { removeComment, closeModal, setComment } from "../features/comments/commentsSlice";
+import "../styles/Components/_modalComment.scss";
 
 const CommentModal = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const CommentModal = () => {
   if (!visible) return null;
 
   return (
-    <div className="modal">
+    <div className="modal-overlay">
       <textarea
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
