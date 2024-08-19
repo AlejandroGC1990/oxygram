@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/Components/Carousel.css";
+import "../styles/Components/_carousel.scss";
 
 const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,10 +25,7 @@ const Carousel = ({ images }) => {
 
   return (
     <div className="carousel">
-      <button className="carousel-button" onClick={handlePrev}>
-        &lt;
-      </button>
-      <div className="carousel-content">
+      <div className="carousel__content">
         {displayedImages.length > 0 && (
           <img
             src={displayedImages[currentIndex].urls.regular}
@@ -36,17 +33,22 @@ const Carousel = ({ images }) => {
           />
         )}
       </div>
-      <button className="carousel-button" onClick={handleNext}>
-        &gt;
+      <div className="carousel__content-dots">
+      <button className="carousel__content-dots__button" onClick={handlePrev}>
+        &lt;
       </button>
-      <div className="carousel-dots">
         {displayedImages.map((_, index) => (
           <span
+            className={`carousel__content-dots__dot ${
+              index === currentIndex ? "active" : ""
+            }`}
             key={index}
-            className={`dot ${index === currentIndex ? "active" : ""}`}
             onClick={() => setCurrentIndex(index)}
           ></span>
         ))}
+      <button className="carousel__content-dots__button" onClick={handleNext}>
+        &gt;
+      </button>
       </div>
     </div>
   );

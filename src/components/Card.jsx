@@ -1,4 +1,3 @@
-// components/Card.jsx
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addFav, removeFav } from "../features/favs/favsSlice";
@@ -9,6 +8,7 @@ import iconHeart from "../assets/icon_heart.png";
 import iconMessage from "../assets/icon_message.png";
 import iconDownload from "../assets/icon_download.png";
 import iconComment from "../assets/icon_comment.png";
+import "../styles/Components/_card.scss";
 
 const Card = ({ image }) => {
   const dispatch = useDispatch();
@@ -44,40 +44,72 @@ const Card = ({ image }) => {
 
   return (
     <div className="card">
-      <img src={image.urls.thumb} alt={image.description || "Image"} />
-      <div className="card-content">
-        <p>Photo by {image.user.name}</p>
+      <p className="card__nameUser">
+        <strong>@{image.user.name}</strong>
+      </p>
+      <div className="card__content">
         <img
-          onClick={handleFav}
-          src={iconHeart}
-          alt={favorite ? "Remove from favorites" : "Add to favorites"}
+          className="card__content__img"
+          src={image.urls.thumb}
+          alt={image.description || "Image"}
         />
-        {favorite && (
+        <div className="card__content__icon">
           <img
-            onClick={handleCommentClick}
-            src={iconComment}
-            alt="Add comment"
+            className="card__content__icon__action"
+            onClick={handleFav}
+            src={iconHeart}
+            alt={favorite ? "Remove from favorites" : "Add to favorites"}
           />
-        )}
-        <img onClick={handleDownload} src={iconDownload} alt="Download image" />
-        <img src={iconMessage} alt="Send message" />
+          {image.likes > 0 && (
+            <p className="">
+              <strong>{image.likes}</strong>
+            </p>
+          )}
+          {favorite && (
+            <img
+              className="card__content__icon__action"
+              onClick={handleCommentClick}
+              src={iconComment}
+              alt="Add comment"
+            />
+          )}
+          <img
+            className="card__content__icon__action"
+            src={iconMessage}
+            alt="Send message"
+          />
+          <img
+            className="card__content__icon__action"
+            onClick={handleDownload}
+            src={iconDownload}
+            alt="Download image"
+          />
+        </div>
+        <p>
+          <strong>Width:</strong> {image.width}px <strong>Height:</strong> {image.height}px
+          
+        </p>
 
-        {image.width > 0 && <p>Width: {image.width} px</p>}
-        {image.height > 0 && <p>Height: {image.height} px</p>}
-        {image.likes > 0 && <p>Likes: {image.likes}</p>}
-        {image.tags && image.tags.length > 0 ? (
-          image.tags.map((tag) => (
-            <a key={tag.title} onClick={() => handleTagClick(tag.title)}>
-              #{tag.title}{" "}
-            </a>
-          ))
-        ) : (
-          <p></p>
+        {comment.length > 0 && (
+          <p>
+            <strong>Description:</strong> {comment}
+          </p>
         )}
 
-        <p>Description: {comment}</p>
+        <div className="card__content__tags">
+          {image.tags && image.tags.length > 0 ? (
+            image.tags.map((tag) => (
+              <a key={tag.title} onClick={() => handleTagClick(tag.title)}>
+                #{tag.title}{" "}
+              </a>
+            ))
+          ) : (
+            <p></p>
+          )}
+        </div>
+
+        {visible && imageId === image.id && <CommentModal />}
       </div>
-      {visible && imageId === image.id && <CommentModal />}
     </div>
   );
 };

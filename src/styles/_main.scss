@@ -1,0 +1,11 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-width: 375px;
+
+  &__main {
+    flex: 1;
+    padding: 4em 0 3em;
+    box-sizing: border-box;
+  }
+}

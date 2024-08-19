@@ -1,4 +1,3 @@
-// features/comments/commentsSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const loadCommentsFromLocalStorage = () => {

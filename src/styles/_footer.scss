@@ -1,0 +1,23 @@
+@import "./variables";
+
+.footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border-color: $primary-color;
+  border-top: 0.5em;
+  background-color: white;
+  bottom: 0;
+  padding: 0.5rem 0;
+  
+  &__icon {
+    height: 2em;
+    width: auto;
+    padding: 0 1em;
+  }
+}
