@@ -31,13 +31,13 @@ const commentSlice = createSlice({
       delete state.comments[imageId];
       saveCommentsToLocalStorage(state.comments);
     },
-    openModal(state, action) {
+    openCommentModal(state, action) {
       state.modal = {
         visible: true,
         imageId: action.payload,
       };
     },
-    closeModal(state) {
+    closeCommentModal(state) {
       state.modal = {
         visible: false,
         imageId: null,
@@ -46,7 +46,13 @@ const commentSlice = createSlice({
   },
 });
 
-export const { setComment, removeComment, openModal, closeModal } =
-  commentSlice.actions;
+export const {
+  setComment,
+  removeComment,
+  openCommentModal,
+  closeCommentModal,
+  openContactModal,
+  closeContactModal,
+} = commentSlice.actions;
 
 export default commentSlice.reducer;

@@ -25,6 +25,10 @@ export const ImagesSlice = createSlice({
     },
     resetPage: (state) => {
       state.page = 1;
+    },
+    resetSearchResults: (state) => {
+      state.searchPhotos = [];
+      state.searchQuery = "";
     }
   },
   extraReducers: (builder) => {
@@ -35,7 +39,8 @@ export const ImagesSlice = createSlice({
       })
       .addCase(FetchImagesListThunk.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.randomPhotos = [...state.randomPhotos, ...action.payload];
+        state.randomPhotos = [...action.payload];
+        // state.randomPhotos = [...state.randomPhotos, ...action.payload];
       })
       .addCase(FetchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
@@ -51,7 +56,8 @@ export const ImagesSlice = createSlice({
         state.status = "fulfilled";
         state.searchPhotos = action.payload == null ? [] : action.payload;
         
-        state.randomPhotos = [...state.randomPhotos, ...action.payload];
+        state.randomPhotos = [...action.payload];
+        // state.randomPhotos = [...state.randomPhotos, ...action.payload];
       })
       .addCase(FetchSearchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
