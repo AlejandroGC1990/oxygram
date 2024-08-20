@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addFav, removeFav } from "../features/favs/favsSlice";
 import { downloadImageThunk } from "../features/imgs/imgsThunk";
-import { openModal, removeComment } from "../features/comments/commentsSlice";
+import { openCommentModal, removeComment } from "../features/comment/commentSlice";
+import { openContactModal } from "../features/modals/modalSlice";
 import CommentModal from "./ModalComment";
+import ContactModal from './ModalContact';
 import iconHeart from "../assets/icon_heart.png";
 import iconMessage from "../assets/icon_message.png";
 import iconDownload from "../assets/icon_download.png";
@@ -16,7 +18,8 @@ const Card = ({ image }) => {
   const favs = useSelector((state) => state.favs.favs);
   const comments = useSelector((state) => state.comments.comments);
   const { visible, imageId } = useSelector((state) => state.comments.modal);
-
+  const isContactModalOpen = useSelector((state) => state.contact.isModalOpen);
+ 
   const favorite = favs.some((fav) => fav.id === image.id);
   const comment = comments[image.id] || "";
 
@@ -35,12 +38,17 @@ const Card = ({ image }) => {
   };
 
   const handleCommentClick = () => {
-    dispatch(openModal(image.id));
+    dispatch(openCommentModal(image.id));
+  };
+
+  const handleMessageClick = () => {
+    dispatch(openContactModal());
   };
 
   const handleTagClick = (tag) => {
     navigate(`/search/${tag}/`);
   };
+
 
   return (
     <div className="card">
@@ -75,6 +83,7 @@ const Card = ({ image }) => {
           )}
           <img
             className="card__content__icon__action"
+            onClick={handleMessageClick}
             src={iconMessage}
             alt="Send message"
           />
@@ -84,11 +93,11 @@ const Card = ({ image }) => {
             src={iconDownload}
             alt="Download image"
           />
+          <p>
+            <strong>- W:</strong> {image.width}px <strong>H:</strong>{" "}
+            {image.height}px
+          </p>
         </div>
-        <p>
-          <strong>Width:</strong> {image.width}px <strong>Height:</strong> {image.height}px
-          
-        </p>
 
         {comment.length > 0 && (
           <p>
@@ -109,6 +118,7 @@ const Card = ({ image }) => {
         </div>
 
         {visible && imageId === image.id && <CommentModal />}
+        {isContactModalOpen && <ContactModal />}
       </div>
     </div>
   );

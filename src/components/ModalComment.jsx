@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import {
   removeComment,
-  closeModal,
+  closeCommentModal,
   setComment,
-} from "../features/comments/commentsSlice";
+} from "../features/comment/commentSlice";
 import "../styles/Components/_modalComment.scss";
 
 const CommentModal = () => {
@@ -20,16 +20,16 @@ const CommentModal = () => {
 
   const handleSave = () => {
     dispatch(setComment({ imageId, comment: inputValue }));
-    dispatch(closeModal());
+    dispatch(closeCommentModal());
   };
 
   const handleDelete = () => {
     dispatch(removeComment({ imageId }));
-    dispatch(closeModal());
+    dispatch(closeCommentModal());
   };
 
   const handleClose = () => {
-    dispatch(closeModal());
+    dispatch(closeCommentModal());
   };
 
   if (!visible) return null;

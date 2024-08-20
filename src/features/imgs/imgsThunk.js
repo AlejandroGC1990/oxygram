@@ -11,6 +11,7 @@ export const FetchImagesListThunk = createAsyncThunk(
   async ({page = 1, perPage = 10} = {}) => {
     try {
       const url = getRandomPhotosEndpoint({page, perPage});
+
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -31,6 +32,7 @@ export const FetchImagesListThunk = createAsyncThunk(
     }
   }
 );
+
 
 //Search photos
 export const FetchSearchImagesListThunk = createAsyncThunk(

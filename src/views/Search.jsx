@@ -7,10 +7,9 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 
 const Search = () => {
   const [query, setQuery] = useState("");
-  // const [searchQuery, setSearchQuery] = useState("");
   const [selectedImg, setSelectedImg] = useState(null);
   const dispatch = useDispatch();
-  const { searchPhotos, status } = useSelector((state) => state.imgs);
+  const { searchPhotos, randomPhotos, status } = useSelector((state) => state.imgs);
   const { tag } = useParams();
 
   useInfiniteScroll();
@@ -20,11 +19,18 @@ const Search = () => {
       setQuery(tag);
       dispatch(FetchSearchImagesListThunk({ query: tag }));
     } else if (query === "") {
-      dispatch(FetchImagesListThunk());
+      dispatch(FetchImagesListThunk({ page: 1, perPage: 10 }));
     } else {
       dispatch(FetchSearchImagesListThunk({ query }));
     }
   }, [tag, query, dispatch]);
+
+  useEffect(() => {
+    return () => {
+      // Limpia el valor del input
+      dispatch({ type: 'imgs/resetSearchResults' }); 
+    };
+  }, [dispatch]);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -34,11 +40,11 @@ const Search = () => {
     dispatch(FetchSearchImagesListThunk({ query }));
   };
 
-  const openModal = (image) => {
+  const openCommentModal = (image) => {
     setSelectedImg(image);
   };
 
-  const closeModal = () => {
+  const closeCommentModal = () => {
     setSelectedImg(null);
   };
 
@@ -56,18 +62,18 @@ const Search = () => {
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (
         <div>
-          {searchPhotos.map((image) => (
+          {(query === "" ? randomPhotos : searchPhotos).map((image) => (
             <img
               key={image.id}
               src={image.urls.small}
               alt={image.alt_description}
-              onClick={() => openModal(image)}
+              onClick={() => openCommentModal(image)}
             />
           ))}
         </div>
       )}
       {selectedImg && (
-        <Modal image={selectedImg} onClose={closeModal} />
+        <Modal image={selectedImg} onClose={closeCommentModal} />
       )}
     </div>
   );
