@@ -12,12 +12,17 @@ body {
 body main {
   display: block;
 }
-body main p,
+body main p {
+  font-family: "Grape Nuts", sans-serif;
+  text-align: center;
+}
 body main h1,
 body main h2,
 body main h3 {
   font-family: "Grape Nuts", sans-serif;
   text-align: center;
+  color: #0E8AF0;
+  margin: 1em 0 0em;
 }
 
 @media (min-width: 1000px) {

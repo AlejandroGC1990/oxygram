@@ -7,6 +7,7 @@ import { openContactModal } from "../features/modals/modalSlice";
 import CommentModal from "./ModalComment";
 import ContactModal from './ModalContact';
 import iconHeart from "../assets/icon_heart.png";
+import iconRedHeart from "../assets/icon_heartRed.png";
 import iconMessage from "../assets/icon_message.png";
 import iconDownload from "../assets/icon_download.png";
 import iconComment from "../assets/icon_comment.png";
@@ -65,7 +66,7 @@ const Card = ({ image }) => {
           <img
             className="card__content__icon__action"
             onClick={handleFav}
-            src={iconHeart}
+            src={favorite ? iconRedHeart : iconHeart}
             alt={favorite ? "Remove from favorites" : "Add to favorites"}
           />
           {image.likes > 0 && (

@@ -14,12 +14,17 @@ body {
   main {
     display: block;
     
-    p,
+    p {
+      font-family: $font-primary;
+      text-align: center;
+    }
     h1,
     h2,
     h3 {
       font-family: $font-primary;
       text-align: center;
+      color: $primary-color;
+      margin: 1em 0 0em;
     }
   }
 }
