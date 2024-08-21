@@ -26,7 +26,7 @@ const ContactModal = () => {
             alejandro.garcia.carmona@gmail.com
           </p>
         </div>
-        <div className="contact-modal__content__pack__pack">
+        <div className="contact-modal__content__pack">
           <img
             className="contact-modal__content__pack__icon"
             src={icon_phone}
@@ -34,7 +34,7 @@ const ContactModal = () => {
           />
           <p className="contact-modal__content__pack__text">690769237</p>
         </div>
-        <div className="contact-modal__content__pack__pack">
+        <div className="contact-modal__content__pack">
           <img
             className="contact-modal__content__pack__icon"
             src={icon_linkedin}
