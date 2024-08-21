@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import Card from "./Card";
+import "../styles/Components/_modalCard.scss";
 
 const Modal = ({image, onClose}) => {
     useEffect(() => {
@@ -16,9 +17,9 @@ const Modal = ({image, onClose}) => {
     }, [onClose]);
 
     return(
-        <div onClick={onClose}>
-            <div onClick={(e) => e.stopPropagation()}>
-                <button onClick={onClose}>X</button>
+        <div className="modal-container" onClick={onClose}>
+                <button className="modal-container__close" onClick={onClose}>X</button>
+            <div className="modal-container__card" onClick={(e) => e.stopPropagation()}>
                 <Card key={image.id} image={image} />
             </div>
         </div>
