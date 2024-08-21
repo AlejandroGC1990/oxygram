@@ -1,3 +1,5 @@
+@import "../variables";
+
 .modal-container {
   position: fixed;
   top: 0;
@@ -12,11 +14,15 @@
   z-index: 1000;
 
   &__close {
-    position: absolute;
-    top: 6.5em;
-    right: 2em;
-    background: none;
+    background-color: $primary-color;
+    color: white;
     border: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    border: none;
+    padding: 0.1em 0.3em;
     font-size: 1.5rem;
     cursor: pointer;
     z-index: 1002;

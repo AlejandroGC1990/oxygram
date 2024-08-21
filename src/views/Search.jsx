@@ -61,7 +61,7 @@ const Search = () => {
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (
-        <div>
+        <div className="search__photo-gallery">
           {(query === "" ? randomPhotos : searchPhotos).map((image) => (
             <img
               key={image.id}

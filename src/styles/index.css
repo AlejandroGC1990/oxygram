@@ -9,13 +9,15 @@ body {
   min-width: 320px;
   text-align: center;
 }
-body h1,
-body h2,
-body h3 {
-  text-align: center;
-}
 body main {
   display: block;
+}
+body main p,
+body main h1,
+body main h2,
+body main h3 {
+  font-family: "Grape Nuts", sans-serif;
+  text-align: center;
 }
 
 @media (min-width: 1000px) {
