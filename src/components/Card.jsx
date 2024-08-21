@@ -93,14 +93,14 @@ const Card = ({ image }) => {
             src={iconDownload}
             alt="Download image"
           />
-          <p>
-            <strong>- W:</strong> {image.width}px <strong>H:</strong>{" "}
+          <p className="card__content__icon__dimensions">
+            <strong> W:</strong> {image.width}px <strong>H:</strong>{" "}
             {image.height}px
           </p>
         </div>
 
         {comment.length > 0 && (
-          <p>
+          <p className="card__content__description">
             <strong>Description:</strong> {comment}
           </p>
         )}
