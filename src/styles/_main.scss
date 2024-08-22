@@ -1,11 +1,31 @@
 .layout {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-width: 375px;
+  width: 100%;
 
-  &__main {
+  &__content {
     flex: 1;
-    padding: 4em 0 3em;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    &__main {
+      flex: 1;
+      padding: 4em 0em 0em;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .layout{
+    margin-left: 15em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

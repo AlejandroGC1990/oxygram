@@ -7,22 +7,19 @@
   box-sizing: border-box;
   max-width: 100%;
   overflow-x: hidden;
-
-  h1 {
-    margin-bottom: 1rem;
-  }
+  justify-content: center;
 
   &__input {
     display: flex;
     flex-direction: row;
-    // justify-content: center;
     align-items: center;
+    justify-content: space-between;
     height: 2em;
     width: 70%;
     background-color: rgb(212, 208, 208);
     border: none;
     border-radius: 15px;
-    margin: 0 0 1rem;
+    margin: 1em 0rem 1.5em;
     padding-left: 0.5em;
 
     input {
@@ -34,10 +31,6 @@
       background-color: transparent;
     }
 
-    button img {
-      width: 1em;
-    }
-    
     button {
       background-color: $primary-color;
       border: none;
@@ -54,9 +47,8 @@
   }
 
   &__photo-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
     width: 100%;
     max-width: 100%;
@@ -66,13 +58,28 @@
       max-width: 100%;
       height: auto;
       cursor: pointer;
-      border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.2s ease;
 
       &:hover {
         transform: scale(1.05);
       }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .search {
+    margin-left: -10em;
+
+    &__input {
+      width: 25em;
+      margin: 5em auto;
+    }
+
+    &__photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 }

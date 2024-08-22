@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FetchImagesListThunk } from "../features/imgs/imgsThunk";
 import Card from "../components/Card";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import "../styles/Views/_home.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,11 +19,11 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Random Photos</h1>
+      <h1>For you</h1>
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (
-        <div className="photo-gallery">
+        <div className="home__photo-gallery">
           {randomPhotos.map((image) => (
             <Card key={image.id} image={image} />
           ))}

@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchSearchImagesListThunk, FetchImagesListThunk } from "../features/imgs/imgsThunk";
+import {
+  FetchSearchImagesListThunk,
+  FetchImagesListThunk,
+} from "../features/imgs/imgsThunk";
 import { useParams } from "react-router-dom";
 import ModalCard from "../components/ModalCard";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import "../styles/Views/_search.scss";
+import { CiSearch } from "react-icons/ci";
 
 const Search = () => {
   const [query, setQuery] = useState("");
   const [selectedImg, setSelectedImg] = useState(null);
   const dispatch = useDispatch();
-  const { searchPhotos, randomPhotos, status } = useSelector((state) => state.imgs);
+  const { searchPhotos, randomPhotos, status } = useSelector(
+    (state) => state.imgs
+  );
   const { tag } = useParams();
 
   useInfiniteScroll();
@@ -28,7 +35,7 @@ const Search = () => {
   useEffect(() => {
     return () => {
       // Limpia el valor del input
-      dispatch({ type: 'imgs/resetSearchResults' }); 
+      dispatch({ type: "imgs/resetSearchResults" });
     };
   }, [dispatch]);
 
@@ -51,13 +58,17 @@ const Search = () => {
   return (
     <div className="search">
       <h1>Search Photos</h1>
-      <input
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Search for photos..."
-      />
-      <button onClick={handleSearchClick}>Search</button>
+      <div className="search__input">
+        <input
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          placeholder="Search for photos..."
+        />
+        <button onClick={handleSearchClick}>
+          <CiSearch color="white"/>
+        </button>
+      </div>
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (

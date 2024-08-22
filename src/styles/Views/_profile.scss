@@ -1,53 +1,81 @@
 @import "../variables";
 
 .profile {
+  width: 100%;
+  max-width: 375px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 
-  &__no-favorites {
+  &__no-favs-message {
     text-align: center;
     color: #888;
     font-size: 1.2em;
   }
-  
-  &__sort-selector {
-    margin-bottom: 1em;
+
+  &__content {
+    padding-top: 2em;
     display: flex;
-    align-items: center;
-    padding: 0.5em;
     flex-direction: column;
-    
-    label {
-      margin-right: 0.5em;
-      font-size: 1em;
-      color: #333;
+    align-items: center;
+
+    &__sort-selector {
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+      padding: 0.5em;
+      flex-direction: column;
+
+      label {
+        margin-right: 0.5em;
+        font-size: 1em;
+        color: #333;
+      }
+
+      &__select {
+        width: 10em;
+        padding: 0.25em;
+        border-radius: 0.25em;
+        border: none;
+        outline: none;
+        font-size: 1em;
+        background-color: #fff;
+        cursor: pointer;
+      }
     }
-    
-    &__select {
-      width: 10em;
-      padding: 0.25em;
-      border-radius: 0.25em;
-      border: none;      
-      outline: none;
-      font-size: 1em;
-      background-color: #fff;
-      cursor: pointer;
+
+    &__photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1em;
+      width: 100%;
     }
   }
+}
 
-  .no-favs-message {
-    font-size: 1.2em;
-    color: #666; 
-  }
+@media (min-width: 1000px) {
+  .profile {
+    max-width: 1200px;
+    padding-right: 15em;
+    &__sort-selector {
+      margin: 2em;
+      display: flex;
+      align-items: center;
+      padding: 0.5em;
+      flex-direction: column;
 
-  .photo-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1em;
-    width: 100%;
-    max-width: 75em; 
+      label {
+        margin: 0.5em;
+        font-size: 2em;
+        color: #333;
+      }
+    }
+    &__content {
+      &__photo-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
   }
 }

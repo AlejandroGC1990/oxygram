@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 31.25em;
   overflow: hidden;
   position: relative;
   background-color: #fff;
@@ -48,7 +47,7 @@
         margin: 0em 0.2em 0em 0.2em;
       }
     }
-    
+
     &__description {
       margin: 0.5em 0 0 0.7em;
     }
@@ -66,5 +65,11 @@
         }
       }
     }
+  }
+}
+
+@media (min-width: 1000px) {
+  .card {
+    width: 100%;
   }
 }

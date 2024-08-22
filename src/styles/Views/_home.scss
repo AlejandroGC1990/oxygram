@@ -1,0 +1,30 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  h1 {
+    margin-bottom: 1.5em;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  &__photo-gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    max-width: 1200px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .home {
+    margin-left: -10em;
+    width: 50%;
+  }
+}
