@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Random Photos</h1>
+      <h1>For you</h1>
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (

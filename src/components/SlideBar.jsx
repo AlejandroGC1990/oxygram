@@ -16,6 +16,7 @@ const Slidebar = () => {
   };
   return (
     <div className="slideBar">
+      <p className="slideBar__title">OXYgram</p>
       <Link
         to="/"
         className={`slideBar__link ${location.pathname === "/" ? "active" : ""}`}
