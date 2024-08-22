@@ -1,0 +1,21 @@
+@import "./variables";
+
+@mixin icon-style {
+  height: 2em;
+  width: auto;
+  padding: 0 1em;
+  z-index: 1;
+}
+
+@mixin active-circle {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3em;
+  height: 3em;
+  background-color: $primary-color;
+  border-radius: 50%;
+  z-index: -1;
+}

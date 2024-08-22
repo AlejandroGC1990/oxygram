@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { openContactModal } from "../features/modals/modalSlice"; // Asegúrate de la ruta correcta
+import { openContactModal } from "../features/modals/modalSlice"; 
 import iconMessage from "../assets/icon_message.png";
-import "../styles/_nav.scss";
+import "../styles/Components/_nav.scss";
 
 const Nav = () => {
   const dispatch = useDispatch();

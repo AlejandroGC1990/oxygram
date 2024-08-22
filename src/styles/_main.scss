@@ -3,9 +3,15 @@
   flex-direction: column;
   min-width: 375px;
 
-  &__main {
+  &__content {
     flex: 1;
-    padding: 4em 0 3em;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    
+    &__main {
+      flex: 1;
+      padding: 4em 0em 0em;
+      box-sizing: border-box;
+    }
   }
 }

@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import icon_search_black from "../assets/icon_search_black.png";
 import icon_user from "../assets/icon_user.png";
 import icon_home from "../assets/icon_home.png";
-import "../styles/_footer.scss";
+import "../styles/Components/_footer.scss";
 
 const Footer = () => {
   const location = useLocation();
