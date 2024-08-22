@@ -67,7 +67,7 @@ main h3 {
   font-family: "Grape Nuts", sans-serif;
   text-align: center;
   color: #0E8AF0;
-  margin: 1em 0em;
+  margin: 0.5em 0em 0em;
 }
 
 @media (min-width: 1000px) {

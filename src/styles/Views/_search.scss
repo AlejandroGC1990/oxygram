@@ -8,15 +8,11 @@
   max-width: 100%;
   overflow-x: hidden;
 
-  h1 {
-    margin-bottom: 1rem;
-  }
-
   &__input {
     display: flex;
     flex-direction: row;
-    // justify-content: center;
     align-items: center;
+    justify-content: space-between;
     height: 2em;
     width: 70%;
     background-color: rgb(212, 208, 208);
@@ -68,6 +64,15 @@
       &:hover {
         transform: scale(1.05);
       }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .search {
+    &__input{
+      width: 25em;
+      margin: 5em 0;
     }
   }
 }

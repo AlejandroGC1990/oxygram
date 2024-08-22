@@ -7,7 +7,7 @@
   right: 0;
   bottom: 0;
   padding: 1em;
-  background-color: rgba(0, 0, 0, 0.75); 
+  background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,13 +31,21 @@
   &__card {
     position: relative;
     background-color: white;
-    width: 90%; 
+    width: 90%;
     max-width: 100%;
     height: auto;
     padding: 1em;
     margin: 0;
     box-sizing: border-box;
-    border-radius: 0.5em; 
+    border-radius: 0.5em;
     z-index: 1001;
+  }
+}
+
+@media (min-width: 1000px) {
+  .modal-container {
+    &__card {
+      width: 50%;
+    }
   }
 }
