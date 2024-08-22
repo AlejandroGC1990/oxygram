@@ -1,0 +1,53 @@
+@import "../variables";
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+
+  &__no-favorites {
+    text-align: center;
+    color: #888;
+    font-size: 1.2em;
+  }
+  
+  &__sort-selector {
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    flex-direction: column;
+    
+    label {
+      margin-right: 0.5em;
+      font-size: 1em;
+      color: #333;
+    }
+    
+    &__select {
+      width: 10em;
+      padding: 0.25em;
+      border-radius: 0.25em;
+      border: none;      
+      outline: none;
+      font-size: 1em;
+      background-color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  .no-favs-message {
+    font-size: 1.2em;
+    color: #666; 
+  }
+
+  .photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    width: 100%;
+    max-width: 75em; 
+  }
+}

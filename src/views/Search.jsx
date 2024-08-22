@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchSearchImagesListThunk, FetchImagesListThunk } from "../features/imgs/imgsThunk";
 import { useParams } from "react-router-dom";
-import Modal from "../components/ModalCard";
+import ModalCard from "../components/ModalCard";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 
 const Search = () => {
@@ -61,7 +61,7 @@ const Search = () => {
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (
-        <div>
+        <div className="search__photo-gallery">
           {(query === "" ? randomPhotos : searchPhotos).map((image) => (
             <img
               key={image.id}
@@ -73,7 +73,7 @@ const Search = () => {
         </div>
       )}
       {selectedImg && (
-        <Modal image={selectedImg} onClose={closeCommentModal} />
+        <ModalCard image={selectedImg} onClose={closeCommentModal} />
       )}
     </div>
   );

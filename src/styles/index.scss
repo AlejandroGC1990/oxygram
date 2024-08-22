@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
+@import "./variables";
+@import "./Views/profile";
 
 * {
   box-sizing: border-box;
@@ -7,20 +8,23 @@
   padding: 0;
 }
 
-body {
+main {
   min-width: 320px;
   text-align: center;
+  display: block;
 
-  main {
-    display: block;
-    
-    p,
-    h1,
-    h2,
-    h3 {
-      font-family: $font-primary;
-      text-align: center;
-    }
+  p,
+  label {
+    font-family: $font-primary;
+    text-align: center;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: $font-primary;
+    text-align: center;
+    color: $primary-color;
+    margin: 1em 0em;
   }
 }
 

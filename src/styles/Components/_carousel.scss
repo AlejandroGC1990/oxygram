@@ -2,14 +2,16 @@
   position: relative;
   width: 95%;
   height: 25em;
-  margin: 1em auto 1em;
+  margin: 0.5em auto;
   overflow: hidden;
   border-radius: 0.625em;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
- 
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
   &__content {
     display: flex;
     justify-content: center;

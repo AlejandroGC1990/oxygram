@@ -1,21 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+.profile__no-favorites {
+  text-align: center;
+  color: #888;
+  font-size: 1.2em;
+}
+.profile__sort-selector {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  flex-direction: column;
+}
+.profile__sort-selector label {
+  margin-right: 0.5em;
+  font-size: 1em;
+  color: #333;
+}
+.profile__sort-selector__select {
+  width: 10em;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  background-color: #fff;
+  cursor: pointer;
+}
+.profile .no-favs-message {
+  font-size: 1.2em;
+  color: #666;
+}
+.profile .photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  width: 100%;
+  max-width: 75em;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
+main {
   min-width: 320px;
   text-align: center;
+  display: block;
 }
-body h1,
-body h2,
-body h3 {
+main p,
+main label {
+  font-family: "Grape Nuts", sans-serif;
   text-align: center;
 }
-body main {
-  display: block;
+main h1,
+main h2,
+main h3 {
+  font-family: "Grape Nuts", sans-serif;
+  text-align: center;
+  color: #0E8AF0;
+  margin: 1em 0em;
 }
 
 @media (min-width: 1000px) {
