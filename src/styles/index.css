@@ -3,47 +3,46 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
   box-sizing: border-box;
 }
 .profile__no-favorites {
   text-align: center;
   color: #888;
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 .profile__sort-selector {
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
   display: flex;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.5em;
   flex-direction: column;
 }
 .profile__sort-selector label {
-  margin: 0.5rem;
-  font-size: 1rem;
+  margin-right: 0.5em;
+  font-size: 1em;
   color: #333;
 }
 .profile__sort-selector__select {
   width: 10em;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
+  padding: 0.25em;
+  border-radius: 0.25em;
   border: none;
   outline: none;
-  font-size: 1rem;
+  font-size: 1em;
   background-color: #fff;
   cursor: pointer;
 }
 .profile .no-favs-message {
-  font-size: 1.2rem;
+  font-size: 1.2em;
   color: #666;
 }
 .profile .photo-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 1em;
   width: 100%;
-  max-width: 1200px;
+  max-width: 75em;
 }
 
 * {

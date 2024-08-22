@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
   box-sizing: border-box;
   max-width: 100%;
   overflow-x: hidden;
@@ -13,28 +12,44 @@
     margin-bottom: 1rem;
   }
 
-  input {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    background-color: grey;
-  }
-
-  button {
-    background-color: $primary-color;
-    border: none;
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
+  &__input {
     display: flex;
+    flex-direction: row;
+    // justify-content: center;
     align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    padding: 0;
-    margin-bottom: 1rem;
-    cursor: pointer;
+    height: 2em;
+    width: 70%;
+    background-color: rgb(212, 208, 208);
+    border: none;
+    border-radius: 15px;
+    margin: 0 0 1rem;
+    padding-left: 0.5em;
+
+    input {
+      width: 20em;
+      max-width: 25rem;
+      box-sizing: border-box;
+      border: none;
+      background-color: transparent;
+    }
+
+    button img {
+      width: 1em;
+    }
+    
+    button {
+      background-color: $primary-color;
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      padding: 0;
+      cursor: pointer;
+    }
   }
 
   &__photo-gallery {
@@ -45,7 +60,7 @@
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    
+
     img {
       max-width: 100%;
       height: auto;
@@ -53,11 +68,10 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.2s ease;
-  
+
       &:hover {
         transform: scale(1.05);
       }
     }
   }
-
 }
