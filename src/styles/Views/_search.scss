@@ -7,6 +7,7 @@
   box-sizing: border-box;
   max-width: 100%;
   overflow-x: hidden;
+  justify-content: center;
 
   &__input {
     display: flex;
@@ -29,7 +30,7 @@
       outline: none;
       background-color: transparent;
     }
-    
+
     button {
       background-color: $primary-color;
       border: none;
@@ -46,9 +47,8 @@
   }
 
   &__photo-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
     width: 100%;
     max-width: 100%;
@@ -70,9 +70,16 @@
 
 @media (min-width: 1000px) {
   .search {
-    &__input{
+    margin-left: -10em;
+
+    &__input {
       width: 25em;
-      margin: 5em 0;
+      margin: 5em auto;
+    }
+
+    &__photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 }
