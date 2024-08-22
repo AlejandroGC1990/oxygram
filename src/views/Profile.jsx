@@ -39,15 +39,15 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      <h1>PROFILE</h1>
+      <h1>Your profile</h1>
       {favs.length === 0 ? (
         <p className="no-favs-message">No favorite photos yet</p>
       ) : (
-        <div>
-          <div className="profile__sort-selector">
+        <div className="profile__content">
+          <div className="profile__content__sort-selector">
             <label htmlFor="sort-by">Sort by:</label>
             <Select
-              className="profile__sort-selector__select"
+              className="profile__content__sort-selector__select"
               id="sort-by"
               options={options}
               value={sortBy}
@@ -55,9 +55,9 @@ const Profile = () => {
             />
           </div>
           <Carousel images={favs} />
-          <div className="photo-gallery">
+          <div className="profile__content__photo-gallery">
             {sortFavorites(favs).map((image) => (
-              <Card key={image.id} image={image} />
+              <Card className="profile__content__photo-gallery__card" key={image.id} image={image} />
             ))}
           </div>
         </div>

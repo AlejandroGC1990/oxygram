@@ -22,7 +22,10 @@
 
 @media (min-width: 1000px) {
   .layout{
+    margin-left: 15em;
     width: 100%;
-    margin-left: 7em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

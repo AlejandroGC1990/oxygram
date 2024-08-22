@@ -1,28 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
 .profile {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 }
-.profile__no-favorites {
+.profile__no-favs-message {
   text-align: center;
   color: #888;
   font-size: 1.2em;
 }
-.profile__sort-selector {
+.profile__content {
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile__content__sort-selector {
   margin-bottom: 1em;
   display: flex;
   align-items: center;
   padding: 0.5em;
   flex-direction: column;
 }
-.profile__sort-selector label {
+.profile__content__sort-selector label {
   margin-right: 0.5em;
   font-size: 1em;
   color: #333;
 }
-.profile__sort-selector__select {
+.profile__content__sort-selector__select {
   width: 10em;
   padding: 0.25em;
   border-radius: 0.25em;
@@ -32,19 +41,33 @@
   background-color: #fff;
   cursor: pointer;
 }
-.profile .no-favs-message {
-  font-size: 1.2em;
-  color: #666;
-}
-.profile .photo-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.profile__content__photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   gap: 1em;
   width: 100%;
-  max-width: 75em;
 }
 
+@media (min-width: 1000px) {
+  .profile {
+    max-width: calc(100% - 15em);
+  }
+  .profile__sort-selector {
+    margin: 2em;
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    flex-direction: column;
+  }
+  .profile__sort-selector label {
+    margin: 0.5em;
+    font-size: 2em;
+    color: #333;
+  }
+  .profile__content__photo-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
 * {
   box-sizing: border-box;
   margin: 0;
