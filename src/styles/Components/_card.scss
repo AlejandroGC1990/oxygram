@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 31.25em;
   overflow: hidden;
   position: relative;
   background-color: #fff;
@@ -66,5 +65,12 @@
         }
       }
     }
+  }
+}
+
+
+@media (min-width: 1000px) {
+  .card{
+    width: 100%;
   }
 }
