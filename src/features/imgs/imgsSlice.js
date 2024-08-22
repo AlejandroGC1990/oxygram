@@ -56,8 +56,6 @@ export const ImagesSlice = createSlice({
         state.status = "fulfilled";
         state.searchPhotos = action.payload == null ? [] : action.payload;
         
-        state.randomPhotos = [...action.payload];
-        // state.randomPhotos = [...state.randomPhotos, ...action.payload];
       })
       .addCase(FetchSearchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
@@ -70,7 +68,7 @@ export const ImagesSlice = createSlice({
         state.status = "pending";
       })
       .addCase(downloadImageThunk.fulfilled, (state) => {
-        state.status = "fullfilled";
+        state.status = "fulfilled";
       })
       .addCase(downloadImageThunk.rejected, (state, action) => {
         state.status = "rejected";

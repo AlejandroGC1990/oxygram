@@ -56,9 +56,16 @@ const Profile = () => {
           </div>
           <Carousel images={favs} />
           <div className="profile__content__photo-gallery">
-            {sortFavorites(favs).map((image) => (
-              <Card className="profile__content__photo-gallery__card" key={image.id} image={image} />
-            ))}
+            {sortFavorites(favs).map((image) => {
+              console.log("Image data:", image); 
+              return (
+                <Card
+                  className="profile__content__photo-gallery__card"
+                  key={image.id}
+                  image={image}
+                />
+              );
+            })}
           </div>
         </div>
       )}

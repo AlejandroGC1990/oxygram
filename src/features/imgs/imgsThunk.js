@@ -33,7 +33,6 @@ export const FetchImagesListThunk = createAsyncThunk(
   }
 );
 
-
 //Search photos
 export const FetchSearchImagesListThunk = createAsyncThunk(
   "imgs/fetchSearchImagesList",
@@ -62,20 +61,29 @@ export const FetchSearchImagesListThunk = createAsyncThunk(
   }
 );
 
+//funcion para obtener favs desde localStorage
+const getFavPhotosFromLocalStorage = () => {
+  const savedFav = localStorage.getItem("favorites");
+  return savedFav ? JSON.parse(savedFav) : [];
+};
 //Download photo
 export const downloadImageThunk = createAsyncThunk(
   "img/downloadImage",
   async (imageId, { getState }) => {
     try {
       const state = getState();
-      console.log("Current state:", state);
       const randomPhotos = state.imgs.randomPhotos || [];
       const searchPhotos = state.imgs.searchPhotos || [];
+      const localStorageFavs = getFavPhotosFromLocalStorage();
+      
+      console.log("Current state:", state); 
       console.log("Random Photos:", randomPhotos);
       console.log("Search Photos:", searchPhotos);
+
       const photo =
-        randomPhotos.find((photo) => photo.id === imageId) ||
-        searchPhotos.find((photo) => photo.id === imageId);
+      randomPhotos.find((photo) => photo.id === imageId) ||
+      searchPhotos.find((photo) => photo.id === imageId) ||
+      localStorageFavs.find((photo) => photo.id === imageId);
 
       console.log("Photo found:", photo);
 
