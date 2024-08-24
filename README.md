@@ -37,6 +37,7 @@ El proyecto está desplegado en un servidor AWS S3. Puedes acceder a la aplicaci
 - Material-UI (MUI): Biblioteca de componentes para el diseño (opcional).
 - Unsplash API: API para la búsqueda de imágenes.
 - file-saver: Biblioteca para descargar archivos.
+
 ## Instalación
 
 1. Clonar el Repositorio.
@@ -65,10 +66,11 @@ npm run dev
 - components/: Componentes reutilizables de la aplicación.
 - features: Configuración de Redux a través de slice y thunk.
 - hooks/: Funciones utilitarias.
+- pages/: Componentes de página como Search y MyPhotos.
 - redux/: Configuración de Redux.
     - slices/: Contiene los slices searchSlice y favouritesSlice.
 - styles/: Estilos globales y temas.
-- views/: Componentes de página como Search y MyPhotos.
+
 ## Referencias de la API
 
 Para buscar imágenes en Unsplash, se utiliza la siguinete ruta de la API de Unsplash:
@@ -78,8 +80,6 @@ Para buscar imágenes en Unsplash, se utiliza la siguinete ruta de la API de Uns
 ```http
   GET /search/photos
 ```
-
-
 
 
 ## Contribuciones
