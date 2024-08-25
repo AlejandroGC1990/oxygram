@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import Slidebar from "./components/SlideBar";
-import "./styles/_main.scss";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import Slidebar from "./SlideBar";
+import "../styles/_main.scss";
 
 const Layout = () => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1000);

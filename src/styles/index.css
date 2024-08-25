@@ -66,7 +66,11 @@
     color: #333;
   }
   .profile__content__photo-gallery {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.6em;
+    grid-gap: 0.5em;
+    width: 100%;
   }
 }
 * {
@@ -84,6 +88,7 @@ main p,
 main label {
   font-family: "Grape Nuts", sans-serif;
   text-align: center;
+  text-decoration: none;
 }
 main h1,
 main h2,

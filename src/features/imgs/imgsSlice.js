@@ -39,8 +39,9 @@ export const ImagesSlice = createSlice({
       })
       .addCase(FetchImagesListThunk.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.randomPhotos = [...action.payload];
+        // state.randomPhotos = [...action.payload];
         // state.randomPhotos = [...state.randomPhotos, ...action.payload];
+        state.randomPhotos = state.randomPhotos.concat(action.payload);
       })
       .addCase(FetchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
@@ -54,7 +55,8 @@ export const ImagesSlice = createSlice({
       })
       .addCase(FetchSearchImagesListThunk.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.searchPhotos = action.payload == null ? [] : action.payload;
+        // state.searchPhotos = action.payload == null ? [] : action.payload;
+        state.searchPhotos = state.searchPhotos.concat(action.payload);
         
       })
       .addCase(FetchSearchImagesListThunk.rejected, (state, action) => {

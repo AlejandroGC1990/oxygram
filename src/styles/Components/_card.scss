@@ -4,12 +4,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: auto;
   overflow: hidden;
   position: relative;
   background-color: #fff;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 1em;
 
   &__nameUser {
     margin: 0 0 0.5em 0.5em;
@@ -70,6 +70,6 @@
 
 @media (min-width: 1000px) {
   .card {
-    width: 100%;
+    width: 20em;
   }
 }

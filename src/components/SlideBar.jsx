@@ -19,6 +19,7 @@ const Slidebar = () => {
       <p className="slideBar__title">OXYgram</p>
       <Link
         to="/"
+        style={{ textDecoration: "none" }}
         className={`slideBar__link ${location.pathname === "/" ? "active" : ""}`}
       >
         <img className="slideBar__icon" src={icon_home} alt="Home" />

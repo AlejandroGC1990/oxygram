@@ -2,10 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addFav, removeFav } from "../features/favs/favsSlice";
 import { downloadImageThunk } from "../features/imgs/imgsThunk";
-import { openCommentModal, removeComment } from "../features/comment/commentSlice";
+import {
+  openCommentModal,
+  removeComment,
+} from "../features/comment/commentSlice";
 import { openContactModal } from "../features/modals/modalSlice";
 import CommentModal from "./ModalComment";
-import ContactModal from './ModalContact';
+import ContactModal from "./ModalContact";
 import iconHeart from "../assets/icon_heart.png";
 import iconRedHeart from "../assets/icon_heartRed.png";
 import iconMessage from "../assets/icon_message.png";
@@ -20,7 +23,7 @@ const Card = ({ image }) => {
   const comments = useSelector((state) => state.comments.comments);
   const { visible, imageId } = useSelector((state) => state.comments.modal);
   const isContactModalOpen = useSelector((state) => state.contact.isModalOpen);
- 
+
   const favorite = favs.some((fav) => fav.id === image.id);
   const comment = comments[image.id] || "";
 
@@ -49,7 +52,6 @@ const Card = ({ image }) => {
   const handleTagClick = (tag) => {
     navigate(`/search/${tag}/`);
   };
-
 
   return (
     <div className="card">
@@ -99,6 +101,9 @@ const Card = ({ image }) => {
             {image.height}px
           </p>
         </div>
+        <p className="card__content__icon__dimensions">
+          <strong> Date:</strong> {image.created_at}
+        </p>
 
         {comment.length > 0 && (
           <p className="card__content__description">

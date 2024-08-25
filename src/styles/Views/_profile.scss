@@ -59,6 +59,7 @@
   .profile {
     max-width: 1200px;
     padding-right: 15em;
+
     &__sort-selector {
       margin: 2em;
       display: flex;
@@ -74,8 +75,27 @@
     }
     &__content {
       &__photo-gallery {
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.6em;
+        grid-gap: 0.5em;
+        width: 100%;
+
+      //   &__card {
+      //     aspect-ratio: 3/2;
+      //     width: calc(33.33% - 0.5em); 
+      //     margin-bottom: 0.5em;
+      //   }
       }
+      // &__photo-gallery {
+      //   display: flex;
+      //   flex-wrap: wrap;
+      //   gap: 0.5em;
+      //   justify-content: space-between;
+      //   align-content: flex-start;
+      //   width: 100%;
+
+      // }
     }
   }
 }

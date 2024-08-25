@@ -29,6 +29,9 @@
   }
 
   &__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     background-color: white;
     width: 90%;
