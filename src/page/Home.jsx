@@ -22,13 +22,13 @@ const Home = () => {
       <h1>For you</h1>
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
-      {status === "fulfilled" && (
+      {/* {status === "fulfilled" && ( */}
         <div className="home__photo-gallery">
           {randomPhotos.map((image) => (
             <Card key={image.id} image={image} />
           ))}
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 };
