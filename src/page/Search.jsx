@@ -7,7 +7,7 @@ import {
 import { useParams } from "react-router-dom";
 import ModalCard from "../components/ModalCard";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
-import "../styles/Views/_search.scss";
+import "../styles/Page/_search.scss";
 import { CiSearch } from "react-icons/ci";
 
 const Search = () => {

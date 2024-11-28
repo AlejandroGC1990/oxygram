@@ -73,29 +73,25 @@
         color: #333;
       }
     }
+
     &__content {
+      width: 100%;
+      background-color: red;
+      
       &__photo-gallery {
+        background-color: rgb(41, 175, 41);
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.6em;
-        grid-gap: 0.5em;
-        width: 100%;
+        align-items: center;
+        justify-content: center;
 
-      //   &__card {
-      //     aspect-ratio: 3/2;
-      //     width: calc(33.33% - 0.5em); 
-      //     margin-bottom: 0.5em;
-      //   }
+        &__card {
+          height: 100%; 
+        }
       }
-      // &__photo-gallery {
-      //   display: flex;
-      //   flex-wrap: wrap;
-      //   gap: 0.5em;
-      //   justify-content: space-between;
-      //   align-content: flex-start;
-      //   width: 100%;
-
-      // }
+     
     }
   }
 }

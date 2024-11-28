@@ -64,9 +64,11 @@ const Card = ({ image }) => {
           src={image.urls.thumb}
           alt={image.description || "Image"}
         />
-        <div className="card__content__icon">
+      </div>
+      <div className="card__subcontent">
+        <div className="card__subcontent__icon">
           <img
-            className="card__content__icon__action"
+            className="card__subcontent__icon__action"
             onClick={handleFav}
             src={favorite ? iconRedHeart : iconHeart}
             alt={favorite ? "Remove from favorites" : "Add to favorites"}
@@ -78,40 +80,41 @@ const Card = ({ image }) => {
           )}
           {favorite && (
             <img
-              className="card__content__icon__action"
+              className="card__subcontent__icon__action"
               onClick={handleCommentClick}
               src={iconComment}
               alt="Add comment"
             />
           )}
           <img
-            className="card__content__icon__action"
+            className="card__subcontent__icon__action"
             onClick={handleMessageClick}
             src={iconMessage}
             alt="Send message"
           />
           <img
-            className="card__content__icon__action"
+            className="card__subcontent__icon__action"
             onClick={handleDownload}
             src={iconDownload}
             alt="Download image"
           />
-          <p className="card__content__icon__dimensions">
+          <p className="card__subcontent__icon__dimensions">
             <strong> W:</strong> {image.width}px <strong>H:</strong>{" "}
             {image.height}px
           </p>
         </div>
-        <p className="card__content__icon__dimensions">
+
+        <p className="card__subcontent__date">
           <strong> Date:</strong> {image.created_at}
         </p>
 
         {comment.length > 0 && (
-          <p className="card__content__description">
+          <p className="card__subcontent__description">
             <strong>Description:</strong> {comment}
           </p>
         )}
 
-        <div className="card__content__tags">
+        <div className="card__subcontent__tags">
           {image.tags && image.tags.length > 0 ? (
             image.tags.map((tag) => (
               <a key={tag.title} onClick={() => handleTagClick(tag.title)}>
@@ -122,10 +125,10 @@ const Card = ({ image }) => {
             <p></p>
           )}
         </div>
-
-        {visible && imageId === image.id && <CommentModal />}
-        {isContactModalOpen && <ContactModal />}
       </div>
+
+      {visible && imageId === image.id && <CommentModal />}
+      {isContactModalOpen && <ContactModal />}
     </div>
   );
 };

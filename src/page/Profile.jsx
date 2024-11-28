@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import Carousel from "../components/Carousel";
 import { useState } from "react";
 import Select from "react-select";
+import "../styles/Page/_profile.scss";
 
 const Profile = () => {
   const { favs } = useSelector((state) => state.favs);
@@ -54,11 +55,15 @@ const Profile = () => {
               onChange={handleSortChange}
             />
           </div>
+
           <Carousel images={favs} />
+          
           <div className="profile__content__photo-gallery">
             {sortFavorites(favs).map((image) => {
               console.log("Image data:", image); 
               return (
+                /*Hacer 3 div que contengan el array 
+                de favoritos dividido entre 3*/
                 <Card
                   className="profile__content__photo-gallery__card"
                   key={image.id}

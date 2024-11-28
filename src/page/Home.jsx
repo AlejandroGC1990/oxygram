@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FetchImagesListThunk } from "../features/imgs/imgsThunk";
 import Card from "../components/Card";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
-import "../styles/Views/_home.scss";
+import "../styles/Page/_home.scss";
 
 const Home = () => {
   const dispatch = useDispatch();

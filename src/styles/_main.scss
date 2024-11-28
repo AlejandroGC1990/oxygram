@@ -5,6 +5,8 @@
   align-items: center;
   min-width: 375px;
   width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 
   &__content {
     flex: 1;
