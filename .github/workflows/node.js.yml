@@ -34,7 +34,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: 'us-east-1'  # Cambia la región de AWS según tu configuración
+        aws-region: 'eu-west-3'  # Cambia la región de AWS según tu configuración
 
     
     - name: Sync repository to S3
