@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
-@import "./variables";
+@import "./variables.scss";
+@import "./Page/home.scss";
+@import "./Page/profile.scss";
+@import "./Page/search.scss";
+@import "./Components/card.scss";
+@import "./Components/carousel.scss";
+@import "./Components/footer.scss";
+@import "./Components/modalCard.scss";
+@import "./Components/modalComment.scss";
+@import "./Components/nav.scss";
+@import "./Components/slideBar.scss";
 
 * {
   box-sizing: border-box;
