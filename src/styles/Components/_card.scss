@@ -61,7 +61,6 @@
 
 @media (min-width: 1000px) {
   .card {
-    width: 30%;
-    background-color: pink;
+    max-width: 25em;
   }
 }

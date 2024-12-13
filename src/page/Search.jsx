@@ -9,6 +9,7 @@ import ModalCard from "../components/ModalCard";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import "../styles/Page/_search.scss";
 import { CiSearch } from "react-icons/ci";
+import Masonry from "react-masonry-css";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -66,13 +67,32 @@ const Search = () => {
           placeholder="Search for photos..."
         />
         <button onClick={handleSearchClick}>
-          <CiSearch color="white"/>
+          <CiSearch color="white" />
         </button>
       </div>
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (
-        <div className="search__photo-gallery">
+        // <div className="search__photo-gallery">
+        //   {(query === "" ? randomPhotos : searchPhotos).map((image) => (
+        //     <img
+        //       key={image.id}
+        //       src={image.urls.small}
+        //       alt={image.alt_description}
+        //       onClick={() => openCommentModal(image)}
+        //     />
+        //   ))}
+        // </div>
+        <Masonry
+          breakpointCols={{
+            default: 4,
+            1100: 3,
+            700: 2,
+            500: 1,
+          }}
+          className="search__photo-gallery"
+          columnClassName="search__photo-gallery-column"
+        >
           {(query === "" ? randomPhotos : searchPhotos).map((image) => (
             <img
               key={image.id}
@@ -81,7 +101,7 @@ const Search = () => {
               onClick={() => openCommentModal(image)}
             />
           ))}
-        </div>
+        </Masonry>
       )}
       {selectedImg && (
         <ModalCard image={selectedImg} onClose={closeCommentModal} />

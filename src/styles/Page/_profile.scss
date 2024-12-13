@@ -76,35 +76,21 @@
 
     &__content {
       width: 100%;
-      background-color: red;
       
       &__photo-gallery {
-        background-color: rgb(9, 226, 9);
         width: 100%;
-        // display: grid;
-        // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        // gap: 1.6em;
-        // align-items: center;
-        // justify-content: center;
-        columns: 3 2em;
-        gap: .5em;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6em;
+        align-items: center;
+        justify-content: center;
+        
         &__card {
-          // height: 100%; 
-          // width: 30%;
-          // object-fit: cover;
+          height: 100%; 
+          width: 30%;
+          object-fit: cover;
         }
       }
-
-      .my-masonry-grid {
-        display: flex;
-        margin-left: -10px; /* gutter spacing */
-        width: auto;
-      }
-      .my-masonry-grid_column {
-        padding-left: 10px;
-        background-clip: padding-box;
-      }
-     
     }
   }
 }
