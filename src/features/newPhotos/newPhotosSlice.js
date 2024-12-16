@@ -10,7 +10,7 @@ const newPhotosSlice = createSlice({
         error: null,
     },
     reducers: {
-        resetLatestPhotos: (state) => {
+        resetlastestPhotos: (state) => {
             state.lastestPhotos = [];
             state.page = 1;
             state.status = "idle";
@@ -24,7 +24,7 @@ const newPhotosSlice = createSlice({
             })
             .addCase(FetchLatestImagesListThunk.fulfilled, (state, action) => {
                 state.status = "fulfilled";
-                state.lastestPhotos = action.payload;
+                state.lastestPhotos = Array.isArray(action.payload) ? action.payload : [];
             })
             .addCase(FetchLatestImagesListThunk.rejected, (state, action) => {
                 state.status = "rejected";
@@ -33,5 +33,5 @@ const newPhotosSlice = createSlice({
     },
 });
 
-export const [resetLatestPhotos] = newPhotosSlice.actions;
+export const {resetlastestPhotos} = newPhotosSlice.actions;
 export default newPhotosSlice.reducer;

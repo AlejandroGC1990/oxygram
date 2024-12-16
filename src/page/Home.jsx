@@ -1,19 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchImagesListThunk } from "../features/imgs/imgsThunk";
+import { FetchLatestImagesListThunk } from "../features/newPhotos/newPhotosThunk";
 import Card from "../components/Card";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import "../styles/Page/_home.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { randomPhotos, status } = useSelector((state) => state.imgs);
+  const { lastestPhotos, status } = useSelector((state) => state.newPhotos);
 
   useEffect(() => {
-    if (randomPhotos.length === 0) {
-      dispatch(FetchImagesListThunk({ page: 1 }));
+    console.log("HOME - Latest photos:", lastestPhotos);
+    if (!Array.isArray(lastestPhotos) || lastestPhotos.length === 0) {
+      dispatch(FetchLatestImagesListThunk({ page: 1 }));
     }
-  }, [dispatch, randomPhotos.length]);
+  }, [dispatch, lastestPhotos]);
 
   useInfiniteScroll();
 
@@ -23,11 +24,16 @@ const Home = () => {
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {/* {status === "fulfilled" && ( */}
-        <div className="home__photo-gallery">
-          {randomPhotos.map((image) => (
+      <div className="home__photo-gallery">
+        {/* {lastestPhotos.map((image) => (
             <Card key={image.id} image={image} />
-          ))}
-        </div>
+          ))} */}
+        {Array.isArray(lastestPhotos) && lastestPhotos.length > 0 ? (
+          lastestPhotos.map((image) => <Card key={image.id} image={image} />)
+        ) : (
+          <p>No images found</p>
+        )}
+      </div>
       {/* )} */}
     </div>
   );

@@ -10,5 +10,5 @@ export const getSearchPhotosEndpoint = (query, page = 1, perPage = 10) => {
   return `${apiUrl}/search/photos/?query=${query}&client_id=${clientId}&page=${page}&per_page=${perPage}`;
 };
 
-export const getLatestPhotosEndpoint = ({ page = 1, perPage = 10 } = {}) =>
+export const getlastestPhotosEndpoint = ({ page = 1, perPage = 10 } = {}) =>
   `${apiUrl}/photos/?client_id=${clientId}&page=${page}&per_page=${perPage}&order_by=latest`;

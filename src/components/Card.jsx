@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addFav, removeFav } from "../features/favs/favsSlice";
-import { downloadImageThunk } from "../features/imgs/imgsThunk";
+import { downloadImageThunk } from "../features/randomPhotos/randomPhotoThunk";
 import {
   openCommentModal,
   removeComment,

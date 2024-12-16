@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   FetchSearchImagesListThunk,
   FetchImagesListThunk,
-} from "../features/imgs/imgsThunk";
+} from "../features/randomPhotos/randomPhotoThunk";
 import { useParams } from "react-router-dom";
 import ModalCard from "../components/ModalCard";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
