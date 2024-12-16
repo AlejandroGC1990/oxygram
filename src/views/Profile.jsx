@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Select from "react-select";
-// import Masonry from 'react-masonry-css';
 import Carousel from "../components/Carousel";
 import Card from "../components/Card";
 

@@ -25,16 +25,12 @@ const Home = () => {
       {status === "rejected" && <p>Error fetching images</p>}
       {/* {status === "fulfilled" && ( */}
       <div className="home__photo-gallery">
-        {/* {lastestPhotos.map((image) => (
-            <Card key={image.id} image={image} />
-          ))} */}
         {Array.isArray(lastestPhotos) && lastestPhotos.length > 0 ? (
           lastestPhotos.map((image) => <Card key={image.id} image={image} />)
         ) : (
           <p>No images found</p>
         )}
       </div>
-      {/* )} */}
     </div>
   );
 };

@@ -73,16 +73,6 @@ const Search = () => {
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (
-        // <div className="search__photo-gallery">
-        //   {(query === "" ? randomPhotos : searchPhotos).map((image) => (
-        //     <img
-        //       key={image.id}
-        //       src={image.urls.small}
-        //       alt={image.alt_description}
-        //       onClick={() => openCommentModal(image)}
-        //     />
-        //   ))}
-        // </div>
         <Masonry
           breakpointCols={{
             default: 4,
