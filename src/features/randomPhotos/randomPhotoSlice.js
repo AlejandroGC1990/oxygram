@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { downloadImageThunk, FetchImagesListThunk, FetchSearchImagesListThunk } from "./imgsThunk";
+import { downloadImageThunk, FetchImagesListThunk, FetchSearchImagesListThunk } from "./randomPhotoThunk";
 
-export const ImagesSlice = createSlice({
+export const RandomPhotoSlice = createSlice({
   name: "imgs",
   initialState: {
     status: "idle",
@@ -79,5 +79,5 @@ export const ImagesSlice = createSlice({
     },
 });
 
-export const { incrementPage, setSearchQuery, resetPage } = ImagesSlice.actions;
-export default ImagesSlice.reducer;
+export const { incrementPage, setSearchQuery, resetPage } = RandomPhotoSlice.actions;
+export default RandomPhotoSlice.reducer;

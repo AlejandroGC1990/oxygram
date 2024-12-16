@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getRandomPhotosEndpoint,
   getSearchPhotosEndpoint,
-} from "../../app/api/apiConfig";
+} from "../../app/api/apiConfig.js";
 import { keys } from "../../app/api/apiKeys.js";
 
 //Random photos
