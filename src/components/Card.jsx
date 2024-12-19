@@ -61,7 +61,7 @@ const Card = ({ image }) => {
       <div className="card__content">
         <img
           className="card__content__img"
-          src={image.urls.thumb}
+          src={image.urls.regular}
           alt={image.description || "Image"}
         />
       </div>

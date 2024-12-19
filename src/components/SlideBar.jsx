@@ -16,23 +16,25 @@ const Slidebar = () => {
   };
   return (
     <div className="slideBar">
-      <p className="slideBar__title">OXYgram</p>
+      <h1 className="slideBar__title">OXYgram</h1>
       <Link
         to="/"
         style={{ textDecoration: "none" }}
-        className={`slideBar__link ${location.pathname === "/" ? "active" : ""}`}
+        className={"slideBar__link"}
       >
-        <img className="slideBar__icon" src={icon_home} alt="Home" />
-        <p>For you</p>
+        <img className="slideBar__link__icon" src={icon_home} alt="Home" />
+        <p className={`${
+          location.pathname === "/" ? "active" : ""
+        }`}>For you</p>
       </Link>
       <Link
         to="/search"
-        className={`slideBar__link ${
-          location.pathname === "/search" ? "active" : ""
-        }`}
+        className={"slideBar__link"}
       >
-        <img className="slideBar__icon" src={icon_search_black} alt="Search" />
-        <p>Search</p>
+        <img className="slideBar__link__icon" src={icon_search_black} alt="Search" />
+        <p className={`${
+          location.pathname === "/search" ? "active" : ""
+        }`}>Search</p>
       </Link>
       <Link
         to="/profile"
@@ -40,12 +42,14 @@ const Slidebar = () => {
           location.pathname === "/profile" ? "active" : ""
         }`}
       >
-        <img className="slideBar__icon" style={{ padding: `0em 0.4em`}} src={icon_user} alt="Profile" />
-        <p>Profile</p>
+        <img className="slideBar__link__icon" style={{ padding: `0em 0.4em`}} src={icon_user} alt="Profile" />
+        <p className={`${
+          location.pathname === "/profile" ? "active" : ""
+        }`}>Profile</p>
       </Link>
-      <div className="slideBar__message">
+      <div className="slideBar__link">
         <img
-          className="slideBar__icon"
+          className="slideBar__link__icon"
           src={iconMessage}
           alt="Contact"
           onClick={handleMessageClick}

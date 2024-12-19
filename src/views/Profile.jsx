@@ -1,8 +1,10 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
-import Select from "react-select";
-import Carousel from "../components/Carousel";
 import Card from "../components/Card";
+import Carousel from "../components/Carousel";
+import { useState } from "react";
+import Select from "react-select";
+import "../styles/Page/_profile.scss";
+import Masonry from 'react-masonry-css';
 
 const Profile = () => {
   const { favs } = useSelector((state) => state.favs);
@@ -45,7 +47,7 @@ const Profile = () => {
       ) : (
         <div className="profile__content">
           <div className="profile__content__sort-selector">
-            <label htmlFor="sort-by">Sort by:</label>
+            <label htmlFor="sort-by">Sort by A:</label>
             <Select
               className="profile__content__sort-selector__select"
               id="sort-by"
@@ -54,22 +56,20 @@ const Profile = () => {
               onChange={handleSortChange}
             />
           </div>
+
           <Carousel images={favs} />
-          {/* <Masonry
-            breakpointCols={{ default: 3, 1199: 2, 767: 1 }}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-          >
-            {sortFavorites(favs).map((image) => (
-              <div key={image.id} className="my-masonry-grid_item">
-                <Card image={image} />
-              </div>
-            ))}
-          </Masonry> */}
+          
           <div className="profile__content__photo-gallery">
-            {sortFavorites(favs).map((image) => (
-              <Card className="profile__content__photo-gallery__card" key={image.id} image={image} />
-            ))}
+             {sortFavorites(favs).map((image) => {
+              console.log("Image data:", image); 
+              return (
+                <Card
+                  className="profile__content__photo-gallery__card"
+                  key={image.id}
+                  image={image}
+                />
+              );
+            })}  
           </div>
         </div>
       )}

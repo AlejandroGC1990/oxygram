@@ -47,20 +47,18 @@
   }
 
   &__photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    width: 100%;
-    max-width: 100%;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
     box-sizing: border-box;
-
+    
     img {
       max-width: 100%;
       height: auto;
       cursor: pointer;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.2s ease;
-
+      
       &:hover {
         transform: scale(1.05);
       }
@@ -70,18 +68,19 @@
 
 @media (min-width: 1000px) {
   .search {
-    margin-left: -15em;
-
+    width: 100%;
+    
     &__input {
       width: 25em;
       margin: 5em auto;
     }
-
+    
     &__photo-gallery {
-      display: flex;
-      width: 80%;
-      padding: 5em;
-
+      display: grid;
+      width: 80em;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      // grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+      
       &-column {
         img {
           width: 19em;

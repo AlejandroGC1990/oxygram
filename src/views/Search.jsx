@@ -76,9 +76,9 @@ const Search = () => {
         <Masonry
           breakpointCols={{
             default: 4,
-            1100: 3,
-            700: 2,
-            500: 1,
+            1550: 3,
+            500: 2,
+            300: 1,
           }}
           className="search__photo-gallery"
           columnClassName="search__photo-gallery-column"
