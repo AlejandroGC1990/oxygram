@@ -24,7 +24,14 @@
 @media (min-width: 1000px) {
   .home {
     margin-left: -10em;
-    width: 50%;
+    width: 100%;
+    display: flex;
+  }
+  .home__photo-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 }
 .profile {
