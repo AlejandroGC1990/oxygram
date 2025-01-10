@@ -73,25 +73,28 @@ const Search = () => {
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
       {status === "fulfilled" && (
-        <Masonry
-          breakpointCols={{
-            default: 4,
-            1550: 3,
-            500: 2,
-            300: 1,
-          }}
-          className="search__photo-gallery"
-          columnClassName="search__photo-gallery-column"
-        >
-          {(query === "" ? randomPhotos : searchPhotos).map((image) => (
-            <img
-              key={image.id}
-              src={image.urls.small}
-              alt={image.alt_description}
-              onClick={() => openCommentModal(image)}
-            />
-          ))}
-        </Masonry>
+        <div className="random">
+          <Masonry
+            breakpointCols={{
+              default: 4,
+              1550: 3,
+              1024: 3,
+              768: 2,
+              500: 1,
+            }}
+            className="search__photo-gallery"
+            columnClassName="search__photo-gallery-column"
+          >
+            {(query === "" ? randomPhotos : searchPhotos).map((image) => (
+              <img
+                key={image.id}
+                src={image.urls.small}
+                alt={image.alt_description}
+                onClick={() => openCommentModal(image)}
+              />
+            ))}
+          </Masonry>
+        </div>
       )}
       {selectedImg && (
         <ModalCard image={selectedImg} onClose={closeCommentModal} />

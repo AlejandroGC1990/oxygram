@@ -23,9 +23,7 @@
 
 @media (min-width: 1000px) {
   .home {
-    margin-left: -10em;
     width: 100%;
-    display: flex;
   }
   .home__photo-gallery {
     display: flex;
@@ -86,7 +84,6 @@
 @media (min-width: 1000px) {
   .profile {
     max-width: 1200px;
-    padding-right: 15em;
   }
   .profile__sort-selector {
     margin: 2em;
@@ -176,38 +173,29 @@
 .search__photo-gallery img:hover {
   transform: scale(1.05);
 }
+.search__masonry-column {
+  display: flex;
+  flex-direction: column;
+}
+.search__masonry img {
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+.search__masonry img:hover {
+  transform: scale(1.05);
+}
 
-@media (min-width: 1000px) {
-  .search {
-    width: 100%;
-    background-color: greenyellow;
-  }
-  .search__input {
-    width: 25em;
-    margin: 5em auto;
-  }
+@media screen and (min-width: 1000px) {
   .search__photo-gallery {
-    display: grid;
-    background-color: aqua;
-    width: 100%;
-    grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
-    justify-content: center;
+    display: flex;
+    gap: 1rem;
   }
   .search__photo-gallery-column {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .search__photo-gallery img {
-    width: 30em;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease;
-    cursor: pointer;
-  }
-  .search__photo-gallery img:hover {
-    transform: scale(1.05);
+    gap: 1em;
   }
 }
 .card {
@@ -535,6 +523,7 @@
   width: 100%;
   height: 3em;
   text-decoration: none !important;
+  margin: 0 0em 0.5em 1em;
 }
 .slideBar__link__icon {
   height: 1.5em;
