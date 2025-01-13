@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import themeReducer from "../features/darkThemeSlice/themeSlice"
 import favsReducer from "../features/favs/favsSlice";
 import imgsReducer from "../features/randomPhotos/randomPhotoSlice";
 import newPhotosReducer from "../features/newPhotos/newPhotosSlice";
@@ -12,5 +13,6 @@ export const store = configureStore({
     newPhotos: newPhotosReducer,
     comments: commentsReducer,
     contact: contactReducer,
+    theme: themeReducer,
   },
 });
