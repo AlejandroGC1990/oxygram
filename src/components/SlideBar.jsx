@@ -7,18 +7,27 @@ import icon_user from "../assets/icon_user.png";
 import icon_home from "../assets/icon_home.png";
 import "../styles/Components/_slideBar.scss";
 import { toggleTheme } from "../features/darkThemeSlice/themeSlice";
+import { useEffect } from "react";
 
 const Slidebar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
+
   const handleMessageClick = () => {
     dispatch(openContactModal());
   };
 
   return (
-    <div className="slideBar">
+    <div className={`slideBar ${darkMode ? "dark-mode" : ""}`}>
       <h1 className="slideBar__title">OXYgram</h1>
       <Link
         to="/"

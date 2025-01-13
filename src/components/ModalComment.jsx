@@ -9,6 +9,8 @@ import "../styles/Components/_modalComment.scss";
 
 const CommentModal = () => {
   const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
+
   const { visible, imageId } = useSelector((state) => state.comments.modal);
   const comment =
     useSelector((state) => state.comments.comments[imageId]) || "";
@@ -35,7 +37,7 @@ const CommentModal = () => {
   if (!visible) return null;
 
   return (
-    <div className="modal">
+    <div className={`modal ${darkMode ? "dark-mode" : ""}`}>
       <div className="modal__content">
         <textarea
           value={inputValue}

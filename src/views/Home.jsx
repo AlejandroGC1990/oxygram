@@ -8,6 +8,7 @@ import "../styles/Page/_home.scss";
 const Home = () => {
   const dispatch = useDispatch();
   const { lastestPhotos, status } = useSelector((state) => state.newPhotos);
+  const darkMode = useSelector((state) => state.theme.darkMode); // Agregar acceso al estado de darkMode
 
   useEffect(() => {
     console.log("HOME - Latest photos:", lastestPhotos);
@@ -19,7 +20,7 @@ const Home = () => {
   useInfiniteScroll();
 
   return (
-    <div className="home">
+    <div className={`home ${darkMode ? "dark-mode" : ""}`}>
       <h1>For you</h1>
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}

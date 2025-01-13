@@ -18,6 +18,7 @@ import "../styles/Components/_card.scss";
 
 const Card = ({ image }) => {
   const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
   const navigate = useNavigate();
   const favs = useSelector((state) => state.favs.favs);
   const comments = useSelector((state) => state.comments.comments);
@@ -65,7 +66,8 @@ const Card = ({ image }) => {
           alt={image.description || "Image"}
         />
       </div>
-      <div className="card__subcontent">
+      {/* <div className="card__subcontent"> */}
+      <div className={`card__subcontent ${darkMode ? "dark-mode" : ""}`}>
         <div className="card__subcontent__icon">
           <img
             className="card__subcontent__icon__action"

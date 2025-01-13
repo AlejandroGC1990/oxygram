@@ -5,10 +5,11 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #fff;
+  // background-color: #fff;
   justify-content: flex-start;
   align-items: flex-start;
   margin-top: 1em;
+  
   &__nameUser {
     margin: 0 0 0.5em 0.5em;
     font-size: 1em;
@@ -25,11 +26,18 @@
       height: auto;
     }
   }
+
   &__subcontent {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    
+    &.dark-mode {
+      background-color: $background-dark;
+      color: $text-dark;
+    }
+
     &__img {
       width: 100%;
       height: auto;

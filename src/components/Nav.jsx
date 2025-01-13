@@ -13,7 +13,7 @@ const Nav = () => {
   };
 
   return (
-    <div className="nav">
+    <div className={`nav ${darkMode ? "dark-mode" : ""}`}>
       <p className="nav__title">OXYgram</p>
       <button 
       onClick={() => dispatch(toggleTheme())}

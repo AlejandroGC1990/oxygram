@@ -1,9 +1,15 @@
+@import "../_variables";
+
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+
+  &.dark-mode {
+    background-color: $background-dark;
+  }
 
   h1 {
     margin-bottom: 1.5em;
@@ -25,7 +31,7 @@
 @media (min-width: 1000px) {
   .home {
     width: 100%;
-    
+
     &__photo-gallery {
       display: flex;
       justify-content: center;

@@ -6,6 +6,9 @@
   justify-content: center;
   width: 100%;
 }
+.home.dark-mode {
+  background-color: #333333;
+}
 .home h1 {
   margin-bottom: 1.5em;
   font-size: 2em;
@@ -204,7 +207,6 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #fff;
   justify-content: flex-start;
   align-items: flex-start;
   margin-top: 1em;
@@ -230,6 +232,10 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+}
+.card__subcontent.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
 }
 .card__subcontent__img {
   width: 100%;
@@ -342,6 +348,10 @@
   background-color: white;
   bottom: 0;
   padding: 0.5rem 0;
+  border-top: 0.1em solid #0E8AF0;
+}
+.footer.dark-mode {
+  background-color: #333333;
 }
 .footer__link {
   position: relative;
@@ -411,6 +421,10 @@
   box-sizing: border-box;
   border-radius: 0.5em;
   z-index: 1001;
+  border: 0.1em solid #0E8AF0;
+}
+.modal-container__card.dark-mode {
+  background-color: #333333;
 }
 
 @media (min-width: 1000px) {
@@ -429,9 +443,12 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  border-radius: 0.3em solid #0E8AF0;
+}
+.modal.dark-mode {
+  background-color: #333333;
 }
 .modal__content {
-  background: white;
   padding: 1.25em;
   border-radius: 8px;
   max-width: 25em;
@@ -478,6 +495,10 @@
   align-items: center;
   box-sizing: border-box;
   background-color: white;
+  border-bottom: 0.1em solid #0E8AF0;
+}
+.nav.dark-mode {
+  background-color: #333333;
 }
 .nav__title {
   font-family: "Grape Nuts";
@@ -501,12 +522,14 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: white;
   border-right: 0.1em solid #0E8AF0;
   box-sizing: border-box;
   padding: 1rem 0;
   transition: transform 0.3s ease;
   padding: 4em 0.5em;
+}
+.slideBar.dark-mode {
+  background-color: #333333;
 }
 .slideBar__title {
   font-family: "Grape Nuts";
@@ -541,10 +564,13 @@
 .slideBar__link p {
   font-family: "Open sans";
   font-size: 1em;
-  color: black;
+  color: #000000;
 }
 .slideBar__link p.active {
   font-weight: bold;
+}
+.dark-mode .slideBar__link p {
+  color: #ffffff;
 }
 .slideBar__link:hover {
   background-color: rgba(14, 138, 240, 0.5);

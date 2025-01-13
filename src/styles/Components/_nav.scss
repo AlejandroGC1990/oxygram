@@ -13,6 +13,11 @@
   align-items: center;
   box-sizing: border-box;
   background-color: white;
+  border-bottom: 0.1em solid $primary-color;
+
+  &.dark-mode {
+    background-color: $background-dark;
+  }
   
   &__title {
     @include title;
