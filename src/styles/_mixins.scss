@@ -1,7 +1,7 @@
 @import "./variables";
 
 @mixin icon-style {
-  height: 2em;
+  height: 1.5em;
   width: auto;
   padding: 0 1em;
   z-index: 1;
@@ -16,14 +16,14 @@
   width: 3em;
   height: 3em;
   background-color: $primary-color;
-  border-radius: 50%;
+  // border-radius: 50%;
   z-index: -1;
 }
 
 @mixin title {
-    font-family: $font-primary;
-    color: $primary-color;
-    font-size: 2.5em;
-    margin: 0;
-    padding-left: 0.5em;
+  font-family: $font-primary;
+  color: $primary-color;
+  font-size: 1.75em;
+  margin: 0;
+  padding-left: 0.5em;
 }

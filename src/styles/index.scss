@@ -1,6 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
-@import "./variables";
-@import "./Views/profile";
+@import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import "./variables.scss";
+@import "./Page/home.scss";
+@import "./Page/profile.scss";
+@import "./Page/search.scss";
+@import "./Components/card.scss";
+@import "./Components/carousel.scss";
+@import "./Components/footer.scss";
+@import "./Components/modalCard.scss";
+@import "./Components/modalComment.scss";
+@import "./Components/nav.scss";
+@import "./Components/slideBar.scss";
 
 * {
   box-sizing: border-box;
@@ -17,6 +26,7 @@ main {
   label {
     font-family: $font-primary;
     text-align: center;
+    text-decoration: none;
   }
   h1,
   h2,
@@ -34,5 +44,6 @@ main {
     flex-direction: column;
     justify-items: center;
     align-items: center;
+    width: 100%;
   }
 }

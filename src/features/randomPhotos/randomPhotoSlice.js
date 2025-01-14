@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { downloadImageThunk, FetchImagesListThunk, FetchSearchImagesListThunk } from "./imgsThunk";
+import { downloadImageThunk, FetchImagesListThunk, FetchSearchImagesListThunk } from "./randomPhotoThunk";
 
-export const ImagesSlice = createSlice({
+export const RandomPhotoSlice = createSlice({
   name: "imgs",
   initialState: {
     status: "idle",
@@ -39,8 +39,7 @@ export const ImagesSlice = createSlice({
       })
       .addCase(FetchImagesListThunk.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.randomPhotos = [...action.payload];
-        // state.randomPhotos = [...state.randomPhotos, ...action.payload];
+        state.randomPhotos = state.randomPhotos.concat(action.payload);
       })
       .addCase(FetchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
@@ -54,10 +53,8 @@ export const ImagesSlice = createSlice({
       })
       .addCase(FetchSearchImagesListThunk.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.searchPhotos = action.payload == null ? [] : action.payload;
+        state.searchPhotos = state.searchPhotos.concat(action.payload);
         
-        state.randomPhotos = [...action.payload];
-        // state.randomPhotos = [...state.randomPhotos, ...action.payload];
       })
       .addCase(FetchSearchImagesListThunk.rejected, (state, action) => {
         state.status = "rejected";
@@ -70,7 +67,7 @@ export const ImagesSlice = createSlice({
         state.status = "pending";
       })
       .addCase(downloadImageThunk.fulfilled, (state) => {
-        state.status = "fullfilled";
+        state.status = "fulfilled";
       })
       .addCase(downloadImageThunk.rejected, (state, action) => {
         state.status = "rejected";
@@ -79,5 +76,5 @@ export const ImagesSlice = createSlice({
     },
 });
 
-export const { incrementPage, setSearchQuery, resetPage } = ImagesSlice.actions;
-export default ImagesSlice.reducer;
+export const { incrementPage, setSearchQuery, resetPage } = RandomPhotoSlice.actions;
+export default RandomPhotoSlice.reducer;

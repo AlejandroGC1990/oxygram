@@ -5,7 +5,7 @@ const Dashboard = ({ images = [] }) => {
         <div key={images.id}>
           {images.map((image) => (
             <div key={image.id}>
-              <img src={image.urls.thumb} alt={image.description || "Image"} />
+              <img src={image.urls.regular} alt={image.description || "Image"} />
             </div>
           ))}
         </div>

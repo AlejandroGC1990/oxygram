@@ -1,34 +1,37 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchImagesListThunk } from "../features/imgs/imgsThunk";
+import { FetchLatestImagesListThunk } from "../features/newPhotos/newPhotosThunk";
 import Card from "../components/Card";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
-import "../styles/Views/_home.scss";
+import "../styles/Page/_home.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { randomPhotos, status } = useSelector((state) => state.imgs);
+  const { lastestPhotos, status } = useSelector((state) => state.newPhotos);
+  const darkMode = useSelector((state) => state.theme.darkMode); // Agregar acceso al estado de darkMode
 
   useEffect(() => {
-    if (randomPhotos.length === 0) {
-      dispatch(FetchImagesListThunk({ page: 1 }));
+    console.log("HOME - Latest photos:", lastestPhotos);
+    if (!Array.isArray(lastestPhotos) || lastestPhotos.length === 0) {
+      dispatch(FetchLatestImagesListThunk({ page: 1 }));
     }
-  }, [dispatch, randomPhotos.length]);
+  }, [dispatch, lastestPhotos]);
 
   useInfiniteScroll();
 
   return (
-    <div className="home">
+    <div className={`home ${darkMode ? "dark-mode" : ""}`}>
       <h1>For you</h1>
       {status === "pending" && <p>Loading...</p>}
       {status === "rejected" && <p>Error fetching images</p>}
-      {status === "fulfilled" && (
-        <div className="home__photo-gallery">
-          {randomPhotos.map((image) => (
-            <Card key={image.id} image={image} />
-          ))}
-        </div>
-      )}
+      {/* {status === "fulfilled" && ( */}
+      <div className="home__photo-gallery">
+        {Array.isArray(lastestPhotos) && lastestPhotos.length > 0 ? (
+          lastestPhotos.map((image) => <Card key={image.id} image={image} />)
+        ) : (
+          <p>No images found</p>
+        )}
+      </div>
     </div>
   );
 };

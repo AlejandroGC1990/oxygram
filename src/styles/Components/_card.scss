@@ -1,28 +1,42 @@
 @import "../variables";
-
 .card {
   display: flex;
   flex-direction: column;
   width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #fff;
+  // background-color: #fff;
   justify-content: flex-start;
   align-items: flex-start;
   margin-top: 1em;
-
+  
   &__nameUser {
     margin: 0 0 0.5em 0.5em;
     font-size: 1em;
     color: #333;
     color: $primary-color;
   }
-
   &__content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    &__img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__subcontent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    
+    &.dark-mode {
+      background-color: $background-dark;
+      color: $text-dark;
+    }
 
     &__img {
       width: 100%;
@@ -33,11 +47,10 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+
       &__action {
         width: 1.25em;
-        height: 1.25em;
         margin: 0.5em 0.2em 0.5em 0.5em;
-
         &:hover {
           opacity: 0.8;
         }
@@ -51,25 +64,11 @@
     &__description {
       margin: 0.5em 0 0 0.7em;
     }
-
-    &__tags {
-      margin: 0.2em 0.7em;
-      a {
-        color: #6f93bd;
-        text-decoration: none;
-        font-weight: bold;
-        margin: 0.2em 0.2em 0em;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
   }
 }
 
 @media (min-width: 1000px) {
   .card {
-    width: 100%;
+    max-width: 25em;
   }
 }

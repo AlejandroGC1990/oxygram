@@ -13,6 +13,11 @@
   align-items: center;
   box-sizing: border-box;
   background-color: white;
+  border-bottom: 0.1em solid $primary-color;
+
+  &.dark-mode {
+    background-color: $background-dark;
+  }
   
   &__title {
     @include title;
@@ -22,5 +27,10 @@
     height: 2em;
     width: auto;
     padding-right: 1em;
+  }
+  
+  .theme-toggle-icon {
+    height: 2em;
+    margin: 0em 1em 0em 8.5em;
   }
 }

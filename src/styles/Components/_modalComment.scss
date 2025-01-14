@@ -11,8 +11,8 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  
-  
+  border-radius: 0.3em solid $primary-color;
+
   &__content {
     background: white;
     padding: 1.25em;
@@ -23,7 +23,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    
+
+    &.dark-mode {
+      background-color: $background-dark;
+      border: 0.2em solid $primary-color;
+    }
+
     textarea {
       width: 100%;
       height: 6.25em;
@@ -31,7 +36,7 @@
       border-radius: 4px;
       resize: none;
     }
-    
+
     &__action {
       display: flex;
       justify-content: space-between;

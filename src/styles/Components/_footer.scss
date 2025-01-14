@@ -16,7 +16,12 @@
   background-color: white;
   bottom: 0;
   padding: 0.5rem 0;
-  
+  border-top: 0.1em solid $primary-color;
+
+  &.dark-mode {
+    background-color: $background-dark;
+  }
+
   &__link {
     position: relative;
     display: flex;
@@ -26,7 +31,8 @@
     padding: 0 1em;
     
     &.active::before {
-      @include active-circle(); 
+      // @include active-circle(); 
+      text-decoration: overline
     }
   }
 
