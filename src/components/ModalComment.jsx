@@ -38,7 +38,7 @@ const CommentModal = () => {
 
   return (
     <div className={`modal ${darkMode ? "dark-mode" : ""}`}>
-      <div className="modal__content">
+      <div className={`modal__content ${darkMode ? "dark-mode" : ""}`}>
         <textarea
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

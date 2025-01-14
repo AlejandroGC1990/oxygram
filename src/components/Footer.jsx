@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import icon_search_black from "../assets/icon_search_black.png";
-import icon_user from "../assets/icon_user.png";
-import icon_home from "../assets/icon_home.png";
+import icon_search_black from "../assets/search_blue.png";
+import icon_user from "../assets/user_blue.png";
+import icon_home from "../assets/home_blue.png";
 import "../styles/Components/_footer.scss";
 import { useDispatch, useSelector } from "react-redux";
 

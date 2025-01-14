@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { closeContactModal } from '../features/modals/modalSlice'; 
-import icon_email from '../assets/icon_email.png'; 
-import icon_phone from '../assets/icon_phone.png'; 
 import icon_linkedin from '../assets/icon_linkedin.jpg'; 
 import '../styles/Components/_modalContact.scss';
 

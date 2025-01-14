@@ -9,11 +9,16 @@ import {
 import { openContactModal } from "../features/modals/modalSlice";
 import CommentModal from "./ModalComment";
 import ContactModal from "./ModalContact";
-import iconHeart from "../assets/icon_heart.png";
-import iconRedHeart from "../assets/icon_heartRed.png";
-import iconMessage from "../assets/icon_message.png";
-import iconDownload from "../assets/icon_download.png";
-import iconComment from "../assets/icon_comment.png";
+// import iconHeart from "../assets/icon_heart.png";
+import iconHeart from "../assets/heart_favourite_blue.png";
+// import iconRedHeart from "../assets/icon_heartRed.png";
+import iconRedHeart from "../assets/heart_favourite_red.png";
+// import iconMessage from "../assets/icon_message.png";
+import iconMessage from "../assets/messages_blue.png";
+// import iconDownload from "../assets/icon_download.png";
+import iconDownload from "../assets/download_blue.png";
+// import iconComment from "../assets/icon_comment.png";
+import iconComment from "../assets/comment_blue.png";
 import "../styles/Components/_card.scss";
 
 const Card = ({ image }) => {

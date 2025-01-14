@@ -31,7 +31,8 @@
     padding: 0 1em;
     
     &.active::before {
-      @include active-circle(); 
+      // @include active-circle(); 
+      text-decoration: overline
     }
   }
 
